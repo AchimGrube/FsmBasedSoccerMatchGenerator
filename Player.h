@@ -11,12 +11,12 @@ class Player : public Entity
 {
 public:
 
-	Player(std::string name) { this->name = name; };
+	Player(string name);
 
-	string getName() { return name; };
+	string getName();
 
-	State getState() { return state; };
-	void setState(State state) { this->state = state; };
+	State getState();
+	void setState(State state);
 
 private:
 

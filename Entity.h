@@ -1,18 +1,24 @@
 #pragma once
 
+#include "Position.h"
+#include"Direction.h"
+
 class Entity abstract
 {
 public:
 
-	int getPosX() { return posX; };
-	void setPosX(int x) { this->posX = x; };
+	Entity();
 
-	int getPosY() { return posY; };
-	void setPosY(int y) { this->posY = y; };
+	int getPositionX();
+	void setPositionX(int);
+	
+	int getPositionY();
+	void setPositionY(int);
 
-	virtual void moveTo(int x, int y);
+	virtual void moveTo(int, int);
 
 private:
 
-	int posX = 0, posY = 0;
+	Position* position;
+	Direction* direction;
 };

@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="AiBasedSoccerMatchGenerator.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Direction.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="IPlayerState.cpp" />
@@ -161,9 +162,11 @@
     <ClCompile Include="PlayerStateDefend.cpp" />
     <ClCompile Include="PlayerStateIdle.cpp" />
     <ClCompile Include="PlayerStateMove.cpp" />
+    <ClCompile Include="Position.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="IPlayerState.h" />
@@ -172,6 +175,7 @@
     <ClInclude Include="PlayerStateDefend.h" />
     <ClInclude Include="PlayerStateIdle.h" />
     <ClInclude Include="PlayerStateMove.h" />
+    <ClInclude Include="Position.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
