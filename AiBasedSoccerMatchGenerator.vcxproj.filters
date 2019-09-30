@@ -57,6 +57,12 @@
     <ClCompile Include="_functions.h">
       <Filter>Headerdateien</Filter>
     </ClCompile>
+    <ClCompile Include="Pitch.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FiniteStateMachine.h">
@@ -93,6 +99,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="NameGenerator.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Pitch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

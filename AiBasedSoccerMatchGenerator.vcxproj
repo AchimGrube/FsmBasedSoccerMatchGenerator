@@ -156,6 +156,8 @@
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
+    <ClCompile Include="Pitch.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="_functions.h" />
     <ClCompile Include="IPlayerState.cpp" />
     <ClCompile Include="NameGenerator.cpp" />
@@ -173,12 +175,14 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="IPlayerState.h" />
     <ClInclude Include="NameGenerator.h" />
+    <ClInclude Include="Pitch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateAttack.h" />
     <ClInclude Include="PlayerStateDefend.h" />
     <ClInclude Include="PlayerStateIdle.h" />
     <ClInclude Include="PlayerStateMove.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

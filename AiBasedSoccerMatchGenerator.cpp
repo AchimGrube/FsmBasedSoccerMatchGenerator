@@ -29,11 +29,11 @@ int main()
 
 	for (auto e : teamA)
 	{
-		cout << e->getName() << endl;
+		cout << e->getName() << " zu Team A hinzugefuegt." <<  endl;
 	}
 
 	for (auto e : teamB)
 	{
-		cout << e->getName() << endl;
+		cout << e->getName() << " zu Team B hinzugefuegt." << endl;
 	}
 }
