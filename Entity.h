@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Position.h"
-#include"Direction.h"
+#include "Direction.h"
 
 class Entity abstract
 {
@@ -11,11 +11,11 @@ public:
 
 	int getPositionX();
 	void setPositionX(int);
-	
+
 	int getPositionY();
 	void setPositionY(int);
 
-	virtual void moveTo(int, int);
+	virtual void move(int, int);
 
 private:
 

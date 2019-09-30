@@ -156,7 +156,9 @@
     <ClCompile Include="Direction.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
+    <ClCompile Include="_functions.h" />
     <ClCompile Include="IPlayerState.cpp" />
+    <ClCompile Include="NameGenerator.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateAttack.cpp" />
     <ClCompile Include="PlayerStateDefend.cpp" />
@@ -170,6 +172,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="IPlayerState.h" />
+    <ClInclude Include="NameGenerator.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateAttack.h" />
     <ClInclude Include="PlayerStateDefend.h" />

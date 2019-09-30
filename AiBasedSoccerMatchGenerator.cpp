@@ -1,13 +1,39 @@
 #include <iostream>
-//#include <string>
 
-#include "Entity.h"
-#include "Ball.h"
 #include "Player.h"
+#include "NameGenerator.h"
+#include "_functions.h"
 
 using std::cout;
+using std::endl;
 
 int main()
 {
-	Player* p = new Player("2q3213");
+	Player* teamA[10];
+	Player* teamB[10];
+
+	NameGenerator* ng = new NameGenerator();
+	srand((unsigned)std::time(NULL));
+
+	for (int i = 0; i < sizeof(teamA) / sizeof(teamA[0]); i++)
+	{
+		teamA[i] = new Player(ng->getName());
+	}
+
+	for (int i = 0; i < sizeof(teamB) / sizeof(teamB[0]); i++)
+	{
+		teamB[i] = new Player(ng->getName());
+	}
+
+	delete ng;
+
+	for (auto e : teamA)
+	{
+		cout << e->getName() << endl;
+	}
+
+	for (auto e : teamB)
+	{
+		cout << e->getName() << endl;
+	}
 }

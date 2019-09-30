@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "_functions.h"
 
 Entity::Entity()
 {
@@ -26,8 +27,11 @@ void Entity::setPositionY(int y)
 	position->setY(y);
 }
 
-void Entity::moveTo(int x, int y)
+void Entity::move(int x, int y)
 {
+	int stepX = Helper::sign(x);
+	int stepY = Helper::sign(y);
+
 	position->setX(x);
 	position->setY(y);
 }

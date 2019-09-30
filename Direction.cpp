@@ -2,9 +2,6 @@
 
 Direction::Direction()
 {
-	directionX = Direction::EAST;
-	directionY = Direction::SOUTH;
-
-	stepsX = 0;
-	stepsY = 0;
+	directionX = Direction::DOWN;
+	directionY = Direction::RIGHT;
 }

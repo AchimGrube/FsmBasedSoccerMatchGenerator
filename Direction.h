@@ -3,10 +3,10 @@
 struct Direction
 {
 public:
-	static const int NORTH = 0;
-	static const int EAST = 1;
-	static const int SOUTH = 2;
-	static const int WEST = 3;
+	static const int UP = -1;
+	static const int DOWN = 1;
+	static const int LEFT = -1;
+	static const int RIGHT = 1;
 
 	Direction();
 
@@ -14,6 +14,4 @@ private:
 
 	int directionX;
 	int directionY;
-	int stepsX;
-	int stepsY;
 };
