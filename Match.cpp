@@ -1,4 +1,9 @@
+#include <vector>
+#include <algorithm>
+
 #include "Match.h"
+
+using std::vector;
 
 namespace Match
 {
@@ -25,10 +30,23 @@ namespace Match
 
 	void nextMinute()
 	{
-		for (auto item : teamA)
-		{
-			
-		}
+		//vector<Player*> players = vector<Player*>();
+
+		//for (auto player : teamA)
+		//{
+		//	players.push_back(player);
+		//}
+		//for (auto player : teamB)
+		//{
+		//	players.push_back(player);
+		//}
+
+		//std::shuffle(players.begin(), players.end(), 0);
+
+		//for (auto player : players)
+		//{
+		//	cout << player->getName() << endl;
+		//}
 	}
 
 	void init()

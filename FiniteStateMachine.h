@@ -1,5 +1,7 @@
 #pragma once
 
+#include "IPlayerState.h"
+
 enum class State
 {
 	Idle, Move, Defend, Attack
@@ -9,9 +11,8 @@ class FiniteStateMachine
 {
 public:
 
-	State updateState(State state);
+	IPlayerState* updateState(State state);
 
 private:
 
-	State state;
 };

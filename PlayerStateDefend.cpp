@@ -1,6 +1,6 @@
 #include "PlayerStateDefend.h"
 
-void PlayerStateDefend::doAction(Player& player, Ball& ball, Position& target)
+void PlayerStateDefend::doAction(std::string& name, Position& target)
 {
 
 }

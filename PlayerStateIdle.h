@@ -6,7 +6,7 @@ class PlayerStateIdle :	public IPlayerState
 {
 public:
 
-	void doAction(Player&, Ball&, Position&) override;
+	void doAction(std::string&, Position&) override;
 
 private:
 

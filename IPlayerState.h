@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Player.h"
-#include "Ball.h"
+#include <string>
+
 #include "Position.h"
 
-class IPlayerState
+class IPlayerState abstract
 {
 public:
 
-	virtual void doAction(Player&, Ball&, Position&) = 0;
+	virtual void doAction(std::string&, Position&) = 0;
 
 private:
 

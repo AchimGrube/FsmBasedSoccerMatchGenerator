@@ -1,6 +1,6 @@
 #include "PlayerStateMove.h"
 
-void PlayerStateMove::doAction(Player& player, Ball& ball, Position& target)
+void PlayerStateMove::doAction(std::string& name, Position& target)
 {
 
 }
