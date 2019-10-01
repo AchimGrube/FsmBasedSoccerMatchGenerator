@@ -1,37 +1,25 @@
 #include "Entity.h"
 #include "_functions.h"
 
-Entity::Entity()
+Position* Entity::getPosition()
 {
-	position = new Position();
-	direction = new Direction();
+	return position;
 }
 
-int Entity::getPositionX()
+Direction* Entity::getDirection()
 {
-	return position->getX();
+	return direction;
 }
 
-void Entity::setPositionX(int x)
+void Entity::setDirection(Direction* direction)
 {
-	position->setX(x);
+	this->direction = direction;
 }
 
-int Entity::getPositionY()
+void Entity::move(Position& const target)
 {
-	return position->getY();
-}
+	int stepX = Helper::sign(target.getX() - position->getX());
+	int stepY = Helper::sign(target.getY() - position->getY());
 
-void Entity::setPositionY(int y)
-{
-	position->setY(y);
-}
-
-void Entity::move(int x, int y)
-{
-	int stepX = Helper::sign(x);
-	int stepY = Helper::sign(y);
-
-	position->setX(x);
-	position->setY(y);
+	position->set(position->getX() + stepX, position->getY() + stepY);
 }

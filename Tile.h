@@ -9,8 +9,13 @@ class Tile
 {
 public:
 
+	Tile(int, int);
+	
 	int getX();
 	int getY();
+
+	Area getArea();
+	void setArea(Area);
 
 private:
 

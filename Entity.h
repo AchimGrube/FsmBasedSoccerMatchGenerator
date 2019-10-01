@@ -7,15 +7,12 @@ class Entity abstract
 {
 public:
 
-	Entity();
+	Position* getPosition();
 
-	int getPositionX();
-	void setPositionX(int);
+	Direction* getDirection();
+	void setDirection(Direction*);
 
-	int getPositionY();
-	void setPositionY(int);
-
-	virtual void move(int, int);
+	virtual void move(Position& const);
 
 private:
 

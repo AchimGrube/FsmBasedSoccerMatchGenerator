@@ -7,7 +7,13 @@ Position::Position()
 
 Position::Position(int x, int y) : Position()
 {
-	setX(x); setY(y);
+	set(x, y);
+}
+
+void Position::set(int x, int y)
+{
+	setX(x);
+	setY(y);
 }
 
 int Position::getX()
@@ -24,6 +30,7 @@ void Position::setX(int x)
 {
 	this->x = x;
 }
+
 void Position::setY(int y)
 {
 	this->y = y;

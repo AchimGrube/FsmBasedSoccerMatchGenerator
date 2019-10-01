@@ -3,12 +3,15 @@
 #include "Player.h"
 #include "NameGenerator.h"
 #include "_functions.h"
+#include "Pitch.h"
 
 using std::cout;
 using std::endl;
 
 int main()
 {
+	Pitch* p = new Pitch();
+
 	Player* teamA[10];
 	Player* teamB[10];
 

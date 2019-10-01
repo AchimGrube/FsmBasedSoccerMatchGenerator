@@ -63,6 +63,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="IMatchEvents.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FiniteStateMachine.h">
@@ -105,6 +108,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="IMatchEvents.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

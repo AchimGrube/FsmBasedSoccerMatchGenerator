@@ -1,6 +1,6 @@
 #include "PlayerStateIdle.h"
 
-void PlayerStateIdle::doAction()
+void PlayerStateIdle::doAction(Player player, Ball ball, Position target)
 {
 
 }

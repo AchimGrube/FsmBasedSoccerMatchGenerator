@@ -6,7 +6,7 @@ class PlayerStateIdle :	public IPlayerState
 {
 public:
 
-	void doAction() override;
+	void doAction(Player player, Ball ball, Position target) override;
 
 private:
 
