@@ -159,6 +159,7 @@
     <ClCompile Include="IMatchEvents.cpp" />
     <ClCompile Include="Pitch.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Match.cpp" />
     <ClCompile Include="_functions.h" />
     <ClCompile Include="IPlayerState.cpp" />
     <ClCompile Include="NameGenerator.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="IMatchEvents.h" />
     <ClInclude Include="IPlayerState.h" />
+    <ClInclude Include="Match.h" />
     <ClInclude Include="NameGenerator.h" />
     <ClInclude Include="Pitch.h" />
     <ClInclude Include="Player.h" />

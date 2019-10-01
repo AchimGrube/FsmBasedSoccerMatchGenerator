@@ -19,3 +19,8 @@ void Player::setState(State state)
 {
 	this->state = state;
 }
+
+void Player::performRound()
+{
+
+}

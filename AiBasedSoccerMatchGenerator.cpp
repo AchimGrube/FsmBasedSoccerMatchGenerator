@@ -1,42 +1,35 @@
 #include <iostream>
+#include <Windows.h>
 
-#include "Player.h"
-#include "NameGenerator.h"
-#include "_functions.h"
-#include "Pitch.h"
+#include "Match.h"
 
 using std::cout;
 using std::endl;
 
+void drawOnConsole(int, int, bool);
+
 int main()
 {
-	Pitch* p = new Pitch();
+	Match::start();
 
-	Player* teamA[10];
-	Player* teamB[10];
+	return 0;
+}
 
-	NameGenerator* ng = new NameGenerator();
-	srand((unsigned)std::time(NULL));
+void drawOnConsole(int x, int y, bool clearLine)
+{
+	COORD coord;
+	coord.Y = y;
 
-	for (int i = 0; i < sizeof(teamA) / sizeof(teamA[0]); i++)
+	if (clearLine)
 	{
-		teamA[i] = new Player(ng->getName());
+		for (int i = 0; i < 121; i++)
+		{
+			coord.X = i;
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+			cout << " ";
+		}
 	}
 
-	for (int i = 0; i < sizeof(teamB) / sizeof(teamB[0]); i++)
-	{
-		teamB[i] = new Player(ng->getName());
-	}
-
-	delete ng;
-
-	for (auto e : teamA)
-	{
-		cout << e->getName() << " zu Team A hinzugefuegt." <<  endl;
-	}
-
-	for (auto e : teamB)
-	{
-		cout << e->getName() << " zu Team B hinzugefuegt." << endl;
-	}
+	coord.X = x;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }

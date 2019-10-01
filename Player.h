@@ -18,6 +18,8 @@ public:
 	State getState() const;
 	void setState(State state);
 
+	void performRound();
+
 private:
 
 	string name;
