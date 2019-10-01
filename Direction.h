@@ -10,10 +10,10 @@ public:
 
 	Direction();
 
-	int getHorizontal();
+	int getHorizontal() const;
 	void setHorizontal(int);
 
-	int getVertical();
+	int getVertical() const;
 	void setVertical(int);
 
 private:

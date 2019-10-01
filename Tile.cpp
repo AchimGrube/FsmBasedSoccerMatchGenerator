@@ -1,18 +1,23 @@
 #include "Tile.h"
 
-Tile::Tile(int x, int y)
+Tile::Tile()
 {
-	this->x = x;
-	this->y = y;
+	x = y = 0;
 	area = Area::Out;
 }
 
-int Tile::getX()
+Tile::Tile(int x, int y) : Tile()
+{
+	this->x = x;
+	this->y = y;
+}
+
+int Tile::getX() const
 {
 	return x;
 }
 
-int Tile::getY()
+int Tile::getY() const
 {
 	return y;
 }

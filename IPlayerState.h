@@ -8,7 +8,7 @@ class IPlayerState
 {
 public:
 
-	virtual void doAction(Player player, Ball ball, Position target) = 0;
+	virtual void doAction(Player&, Ball&, Position&) = 0;
 
 private:
 

@@ -9,8 +9,8 @@ public:
 
 	void set(int, int);
 
-	int getX();
-	int getY();
+	int getX() const;
+	int getY() const;
 
 private:
 	int x = 0, y = 0;

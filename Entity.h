@@ -10,12 +10,12 @@ public:
 	Position* getPosition();
 
 	Direction* getDirection();
-	void setDirection(Direction*);
+	void setDirection(const Direction&);
 
-	virtual void move(Position& const);
+	virtual void move(Position&);
 
 private:
 
-	Position* position;
-	Direction* direction;
+	Position position;
+	Direction direction;
 };

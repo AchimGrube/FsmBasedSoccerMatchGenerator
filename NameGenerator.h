@@ -16,5 +16,5 @@ public:
 
 private:
 
-	vector<string>* names;
+	vector<string> names;
 };

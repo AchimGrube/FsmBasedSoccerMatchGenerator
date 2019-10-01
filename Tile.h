@@ -9,10 +9,11 @@ class Tile
 {
 public:
 
+	Tile();
 	Tile(int, int);
 	
-	int getX();
-	int getY();
+	int getX() const;
+	int getY() const;
 
 	Area getArea();
 	void setArea(Area);

@@ -5,12 +5,12 @@ Player::Player(string name)
 	this->name = name;
 }
 
-string Player::getName()
+string Player::getName() const
 {
 	return name;
 }
 
-State Player::getState()
+State Player::getState() const
 {
 	return state;
 }

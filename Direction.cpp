@@ -6,7 +6,7 @@ Direction::Direction()
 	vertical = Direction::DOWN;
 }
 
-int Direction::getHorizontal()
+int Direction::getHorizontal() const
 {
 	return horizontal;
 }
@@ -16,7 +16,7 @@ void Direction::setHorizontal(int horizontal)
 	this->horizontal = horizontal;
 }
 
-int Direction::getVertical()
+int Direction::getVertical() const
 {
 	return vertical;
 }

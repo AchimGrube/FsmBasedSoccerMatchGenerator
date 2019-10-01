@@ -15,6 +15,6 @@ public:
 
 private:
 
-	Tile* tiles[sizeX][sizeY];
+	Tile tiles[sizeX][sizeY];
 };
 

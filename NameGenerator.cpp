@@ -2,10 +2,8 @@
 
 string NameGenerator::getName()
 {
-	if (names == nullptr)
+	if (names.size() == 0)
 	{
-		names = new vector<string>();
-
 		std::ifstream file;
 		string line;
 
@@ -21,16 +19,16 @@ string NameGenerator::getName()
 				{
 					if (line.substr(line.find_last_of(",") + 1) == "m")
 					{
-						names->push_back(line.substr(0, line.find_first_of(",")));
+						names.push_back(line.substr(0, line.find_first_of(",")));
 					}
 				}
 			}
 		}
 	}
 
-	int rndEntry = rand() % names->size();
+	int rndEntry = rand() % names.size();
 
-	string newName = names->at(rndEntry) + " ";
+	string newName = names.at(rndEntry) + " ";
 	newName += rand() % ('Z' - 'A' + 1) + 'A';
 	newName += ".";
 

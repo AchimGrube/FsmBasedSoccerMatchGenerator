@@ -13,9 +13,9 @@ public:
 
 	Player(string name);
 
-	string getName();
+	string getName() const;
 
-	State getState();
+	State getState() const;
 	void setState(State state);
 
 private:

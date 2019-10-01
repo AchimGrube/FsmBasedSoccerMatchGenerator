@@ -3,23 +3,23 @@
 
 Position* Entity::getPosition()
 {
-	return position;
+	return &position;
 }
 
 Direction* Entity::getDirection()
 {
-	return direction;
+	return &direction;
 }
 
-void Entity::setDirection(Direction* direction)
+void Entity::setDirection(const Direction& direction)
 {
 	this->direction = direction;
 }
 
-void Entity::move(Position& const target)
+void Entity::move(Position& target)
 {
-	int stepX = Helper::sign(target.getX() - position->getX());
-	int stepY = Helper::sign(target.getY() - position->getY());
+	int stepX = Helper::sign(target.getX() - position.getX());
+	int stepY = Helper::sign(target.getY() - position.getY());
 
-	position->set(position->getX() + stepX, position->getY() + stepY);
+	position.set(position.getX() + stepX, position.getY() + stepY);
 }
