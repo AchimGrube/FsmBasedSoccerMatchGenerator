@@ -10,7 +10,8 @@ void drawOnConsole(int, int, bool);
 
 int main()
 {
-	Match::start();
+	Match* match = new Match();
+	match->start();
 
 	return 0;
 }

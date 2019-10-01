@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include "Pitch.h"
 #include "Player.h"
@@ -8,8 +10,25 @@
 
 using std::cout;
 using std::endl;
+using std::vector;
 
-namespace Match
+class Match
 {
+
+public:
+
+	Match();
+
 	void start();
-}
+
+private:
+
+	Player teamA[1];
+	Player teamB[1];
+
+	Pitch pitch;
+
+	void init(); 
+	void nextMinute();
+};
+

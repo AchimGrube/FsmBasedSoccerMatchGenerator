@@ -1,71 +1,60 @@
-#include <vector>
-#include <algorithm>
-
 #include "Match.h"
 
-using std::vector;
-
-namespace Match
+Match::Match()
 {
-	void nextMinute();
-	void init();
 
-	Player* teamA[10];
-	Player* teamB[10];
-	
-	Pitch* pitch;
+}
 
-	void start()
+void Match::start()
+{
+	init();
+
+	cout << endl << "Spielstart:" << endl;
+
+	for (int minute = 1; minute <= 90; minute++)
 	{
-		init();
+		cout << "Minute " << minute << ": " << endl;
+		nextMinute();
+	}
+}
 
-		cout << endl << "Spielstart:" << endl;
+void Match::init()
+{
+	pitch = Pitch();
 
-		for (int minute = 1; minute <= 90; minute++)
-		{
-			cout << "Minute " << minute << ": " << endl;
-			nextMinute();
-		}
+	NameGenerator* ng = new NameGenerator();
+	srand((unsigned)std::time(NULL));
+
+	for (int i = 0; i < sizeof(teamA) / sizeof(teamA[0]); i++)
+	{
+		teamA[i] = Player(ng->getName());
 	}
 
-	void nextMinute()
+	for (int i = 0; i < sizeof(teamB) / sizeof(teamB[0]); i++)
 	{
-		//vector<Player*> players = vector<Player*>();
-
-		//for (auto player : teamA)
-		//{
-		//	players.push_back(player);
-		//}
-		//for (auto player : teamB)
-		//{
-		//	players.push_back(player);
-		//}
-
-		//std::shuffle(players.begin(), players.end(), 0);
-
-		//for (auto player : players)
-		//{
-		//	cout << player->getName() << endl;
-		//}
+		teamB[i] = Player(ng->getName());
 	}
 
-	void init()
+	delete ng;
+}
+
+void Match::nextMinute()
+{
+	vector<Player> players = vector<Player>();
+
+	for (auto player : teamA)
 	{
-		pitch = new Pitch();
+		players.push_back(player);
+	}
+	for (auto player : teamB)
+	{
+		players.push_back(player);
+	}
 
-		NameGenerator* ng = new NameGenerator();
-		srand((unsigned)std::time(NULL));
+	std::random_shuffle(players.begin(), players.end());
 
-		for (int i = 0; i < sizeof(teamA) / sizeof(teamA[0]); i++)
-		{
-			teamA[i] = new Player(ng->getName());
-		}
-
-		for (int i = 0; i < sizeof(teamB) / sizeof(teamB[0]); i++)
-		{
-			teamB[i] = new Player(ng->getName());
-		}
-
-		delete ng;
+	for (auto player : players)
+	{
+		player.performRound();
 	}
 }

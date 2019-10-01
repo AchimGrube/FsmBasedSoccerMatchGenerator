@@ -1,12 +1,16 @@
 #include "Player.h"
 
-Player::Player(string name)
+Player::Player()
 {
-	this->name = name;
 	state = State::Idle;
 	playerHasBall = false;
 	_fsm = FiniteStateMachine();
 	_playerState = nullptr;
+}
+
+Player::Player(string name) : Player()
+{
+	this->name = name;
 }
 
 string Player::getName() const

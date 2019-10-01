@@ -157,9 +157,9 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="IMatchEvents.cpp" />
+    <ClCompile Include="Match.cpp" />
     <ClCompile Include="Pitch.cpp" />
     <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="Match.cpp" />
     <ClCompile Include="_functions.h" />
     <ClCompile Include="IPlayerState.cpp" />
     <ClCompile Include="NameGenerator.cpp" />
