@@ -5,6 +5,7 @@
 #include "Entity.h"
 #include "FiniteStateMachine.h"
 #include "IPlayerState.h"
+#include "Ball.h"
 
 using std::string;
 
@@ -26,7 +27,7 @@ public:
 	bool hasBall() const;
 	void hasBall(bool);
 
-	void performRound();
+	void performRound(Ball&);
 
 private:
 

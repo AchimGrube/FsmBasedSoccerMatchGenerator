@@ -6,7 +6,7 @@ class PlayerStateDefend :	public IPlayerState
 {
 public:
 
-	void doAction(std::string&, Position&) override;
+	void doAction(std::string&, Ball&, Position&) override;
 
 private:
 

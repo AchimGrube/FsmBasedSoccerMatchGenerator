@@ -48,8 +48,8 @@ void Player::hasBall(bool hasBall)
 	this->playerHasBall = hasBall;
 }
 
-void Player::performRound()
+void Player::performRound(Ball& ball)
 {
 	_playerState = _fsm.updateState(getState());
-	_playerState->doAction(name, target);
+	_playerState->doAction(name, ball, target);
 }

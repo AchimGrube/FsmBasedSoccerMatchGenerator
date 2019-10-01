@@ -2,16 +2,53 @@
 
 Match::Match()
 {
+	length = 90;
+	minute = 1;
+}
 
+Ball* Match::getBall()
+{
+	return &ball;
+}
+
+int Match::getLength() const
+{
+	return length;
+}
+
+int Match::getMinute() const
+{
+	return minute;
+}
+
+void Match::addMinute()
+{
+	minute++;
+}
+
+pair<int, int> Match::getScore() const
+{
+	return score;
+}
+
+void Match::setScore(int scoreTeamA, int scoreTeamB)
+{
+	score.first = scoreTeamA;
+	score.second = scoreTeamB;
+}
+
+bool Match::hasEnded() const
+{
+	return minute > length;
 }
 
 void Match::start()
 {
 	init();
 
-	cout << endl << "Spielstart:" << endl;
+	cout << endl << "Spielstart:" << endl << endl;
 
-	for (int minute = 1; minute <= 90; minute++)
+	while(!hasEnded())
 	{
 		cout << "Minute " << minute << ": " << endl;
 		nextMinute();
@@ -55,6 +92,8 @@ void Match::nextMinute()
 
 	for (auto player : players)
 	{
-		player.performRound();
+		player.performRound(ball);
 	}
+
+	addMinute();
 }
