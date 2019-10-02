@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "IPlayerState.h"
 
 enum class State
@@ -11,7 +13,7 @@ class FiniteStateMachine
 {
 public:
 
-	IPlayerState* updateState(State state);
+	std::unique_ptr<IPlayerState> updateState(State state);
 
 private:
 

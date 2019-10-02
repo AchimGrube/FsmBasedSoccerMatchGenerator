@@ -1,9 +1,9 @@
 #include "Entity.h"
 #include "_functions.h"
 
-Position* Entity::getPosition()
+std::unique_ptr<Position> Entity::getPosition()
 {
-	return &position;
+	return std::make_unique<Position>(position);
 }
 
 void Entity::setPosition(const Position& position)
@@ -11,9 +11,10 @@ void Entity::setPosition(const Position& position)
 	this->position = position;
 }
 
-Direction* Entity::getDirection()
+std::unique_ptr<Direction> Entity::getDirection()
 {
-	return &direction;
+	return std::make_unique<Direction>(direction);
+
 }
 
 void Entity::setDirection(const Direction& direction)

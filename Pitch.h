@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "Tile.h"
 
 class Pitch
@@ -11,7 +13,7 @@ public:
 
 	Pitch();
 
-	Tile* getTile(int, int);
+	std::unique_ptr<Tile> getTile(int, int);
 
 private:
 

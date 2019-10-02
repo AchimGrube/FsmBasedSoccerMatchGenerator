@@ -4,18 +4,18 @@
 #include "PlayerStateDefend.h"
 #include "PlayerStateAttack.h"
 
-IPlayerState* FiniteStateMachine::updateState(State state)
+std::unique_ptr<IPlayerState> FiniteStateMachine::updateState(State state)
 {
 	switch (state)
 	{
 	case State::Idle:
-		return new PlayerStateIdle();
+		return std::unique_ptr<IPlayerState>(new PlayerStateIdle);
 	case State::Move:
-		return new PlayerStateMove();
+		return std::unique_ptr<IPlayerState>(new PlayerStateMove);
 	case State::Defend:
-		return new PlayerStateDefend();
+		return std::unique_ptr<IPlayerState>(new PlayerStateDefend);
 	case State::Attack:
-		return new PlayerStateAttack();
+		return std::unique_ptr<IPlayerState>(new PlayerStateAttack);
 	default:
 		return nullptr;
 	}

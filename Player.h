@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include "FiniteStateMachine.h"
 #include "Ball.h"
@@ -16,7 +17,7 @@ public:
 
 	string getName() const;
 
-	Position* getTarget();
+	std::unique_ptr<Position> getTarget();
 	void setTarget(const Position&);
 
 	State getState() const;
@@ -34,6 +35,6 @@ private:
 	State state;
 	bool playerHasBall;
 
-	IPlayerState* _playerState;
+	std::unique_ptr<IPlayerState> _playerState;
 	FiniteStateMachine _fsm;
 };

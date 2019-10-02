@@ -8,9 +8,9 @@ Match::Match()
 	ball.setPosition(*ballPos);
 }
 
-Ball * Match::getBall()
+std::unique_ptr<Ball> Match::getBall()
 {
-	return &ball;
+	return std::make_unique<Ball>(ball);
 }
 
 int Match::getLength() const
@@ -63,29 +63,30 @@ void Match::init()
 {
 	pitch = Pitch();
 
-	NameGenerator* ng = new NameGenerator();
+	std::unique_ptr<NameGenerator> ng = std::make_unique<NameGenerator>();
 	srand((unsigned)std::time(NULL));
 
+	Position startPosition;
 	for (size_t i = 0; i < teamA.size(); i++)
 	{
 		teamA.at(i) = Player(ng->getName());
-
+		startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
+		teamA.at(i).setPosition(startPosition);
 		players.push_back(&teamA.at(i));
 	}
 
 	for (size_t i = 0; i < teamB.size(); i++)
 	{
 		teamB.at(i) = Player(ng->getName());
-
+		startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
+		teamB.at(i).setPosition(startPosition);
 		players.push_back(&teamB.at(i));
 	}
-
-	delete ng;
 }
 
 void Match::nextMinute()
 {
-	std::random_shuffle(players.begin(), players.end());
+	//std::random_shuffle(players.begin(), players.end());
 
 	for (auto& player : players)
 	{
@@ -99,32 +100,14 @@ void Match::nextMinute()
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 }
 
-void Match::printMatchLines(Player& player)
+void Match::printMatchLines(Player & player)
 {
 	printf("Player: %s\n", player.getName().c_str());
 	printf("Position: %d,%d\n", player.getPosition()->getX(), player.getPosition()->getY());
 	printf("has Ball: %s\n", player.hasBall() ? "true" : "false");
 	printf("Target: %d,%d\n", player.getTarget()->getX(), player.getTarget()->getY());
-	string playerState;
-	switch (player.getState())
-	{
-	case State::Idle:
-		playerState = "Idle";
-		break;
-	case State::Move:
-		playerState = "Move";
-		break;
-	case State::Defend:
-		playerState = "Defend";
-		break;
-	case State::Attack:
-		playerState = "Attack";
-		break;
-	default:
-		playerState = "";
-		break;
-	}
-	printf("State: %s\n\n", playerState.c_str());
+	printf("State: %d\n", player.getState());
+	printf("Area: %d\n\n", pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea());
 }
 
 void Match::setConsoleCursorPosition(int x, int y, bool line)

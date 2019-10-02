@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "Position.h"
 #include "Direction.h"
 
@@ -7,10 +9,10 @@ class Entity abstract
 {
 public:
 
-	Position* getPosition();
+	std::unique_ptr<Position> getPosition();
 	void setPosition(const Position&);
 
-	Direction* getDirection();
+	std::unique_ptr<Direction> getDirection();
 	void setDirection(const Direction&);
 
 	virtual void move(Position&);

@@ -7,6 +7,7 @@
 #include <thread>
 #include <Windows.h>
 #include <array>
+#include <memory>
 
 #include "Pitch.h"
 #include "Player.h"
@@ -26,7 +27,7 @@ public:
 
 	Match();
 	
-	Ball* getBall();
+	std::unique_ptr<Ball> getBall();
 
 	int getLength() const;
 
@@ -42,10 +43,8 @@ public:
 
 private:
 
-	array<Player, 2> teamA;
-	//Player teamA[1];
-	array<Player, 2> teamB;
-	//Player teamB[1];
+	array<Player, 1> teamA;
+	array<Player, 1> teamB;
 
 	vector<Player*> players;
 

@@ -18,9 +18,9 @@ string Player::getName() const
 	return name;
 }
 
-Position* Player::getTarget()
+std::unique_ptr<Position> Player::getTarget()
 {
-	return &target;
+	return std::make_unique<Position>(target);
 }
 
 void Player::setTarget(const Position& target)
@@ -50,6 +50,6 @@ void Player::hasBall(bool hasBall)
 
 void Player::performRound(Ball& ball)
 {
-	_playerState = _fsm.updateState(getState());
+	_playerState = std::unique_ptr<IPlayerState>(_fsm.updateState(getState()));
 	_playerState->doAction(*this, ball, target);
 }

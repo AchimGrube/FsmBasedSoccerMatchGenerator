@@ -32,7 +32,7 @@ Pitch::Pitch()
 	}
 }
 
-Tile* Pitch::getTile(int x, int y)
+std::unique_ptr<Tile> Pitch::getTile(int x, int y)
 {
-	return &tiles[x][y];
+	return std::make_unique<Tile>(tiles[x][y]);
 }
