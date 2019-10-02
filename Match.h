@@ -6,6 +6,7 @@
 #include <chrono>
 #include <thread>
 #include <Windows.h>
+#include <array>
 
 #include "Pitch.h"
 #include "Player.h"
@@ -16,6 +17,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 using std::pair;
+using std::array;
 
 class Match
 {
@@ -40,8 +42,12 @@ public:
 
 private:
 
-	Player teamA[1];
-	Player teamB[1];
+	array<Player, 2> teamA;
+	//Player teamA[1];
+	array<Player, 2> teamB;
+	//Player teamB[1];
+
+	vector<Player*> players;
 
 	Pitch pitch;
 	Ball ball;
@@ -51,6 +57,6 @@ private:
 	
 	void init(); 
 	void nextMinute();
-	void drawOnConsole(int, int, bool);
+	void printMatchLines(Player&);
+	void setConsoleCursorPosition(int, int, bool);
 };
-
