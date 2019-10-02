@@ -2,9 +2,7 @@
 
 #include <string>
 
-#include "Entity.h"
 #include "FiniteStateMachine.h"
-#include "IPlayerState.h"
 #include "Ball.h"
 
 using std::string;

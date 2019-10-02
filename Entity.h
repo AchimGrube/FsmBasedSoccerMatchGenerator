@@ -8,6 +8,7 @@ class Entity abstract
 public:
 
 	Position* getPosition();
+	void setPosition(const Position&);
 
 	Direction* getDirection();
 	void setDirection(const Direction&);

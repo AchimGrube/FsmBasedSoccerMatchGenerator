@@ -10,6 +10,11 @@ Position::Position(int x, int y) : Position()
 	set(x, y);
 }
 
+void Position::set(const Position& position)
+{
+	set(position.getX(), position.getY());
+}
+
 void Position::set(int x, int y)
 {
 	setX(x);

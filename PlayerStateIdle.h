@@ -1,12 +1,13 @@
 #pragma once
 
 #include "IPlayerState.h"
+#include "Player.h"
 
 class PlayerStateIdle :	public IPlayerState
 {
 public:
 
-	void doAction(std::string&, Ball&, Position&) override;
+	void doAction(Player&, Ball&, Position&) override;
 
 private:
 

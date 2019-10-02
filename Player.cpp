@@ -51,5 +51,5 @@ void Player::hasBall(bool hasBall)
 void Player::performRound(Ball& ball)
 {
 	_playerState = _fsm.updateState(getState());
-	_playerState->doAction(name, ball, target);
+	_playerState->doAction(*this, ball, target);
 }

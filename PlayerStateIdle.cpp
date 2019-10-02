@@ -1,6 +1,11 @@
 #include "PlayerStateIdle.h"
 
-void PlayerStateIdle::doAction(std::string& name, Ball& ball, Position& target)
+#include <iostream>
+
+void PlayerStateIdle::doAction(Player& player, Ball& ball, Position& target)
 {
-	
+	if (!player.hasBall())
+	{
+		player.setState(State::Move);
+	}
 }

@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <chrono>
+#include <thread>
+#include <Windows.h>
 
 #include "Pitch.h"
 #include "Player.h"
@@ -48,5 +51,6 @@ private:
 	
 	void init(); 
 	void nextMinute();
+	void drawOnConsole(int, int, bool);
 };
 

@@ -7,6 +7,7 @@ public:
 	Position();
 	Position(int x, int y);
 
+	void set(const Position&);
 	void set(int, int);
 
 	int getX() const;
