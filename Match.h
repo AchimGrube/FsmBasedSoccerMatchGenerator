@@ -12,7 +12,7 @@
 #include "Pitch.h"
 #include "Player.h"
 #include "Ball.h"
-#include "NameGenerator.h"
+#include "Generator.h"
 
 using std::cout;
 using std::endl;

@@ -51,9 +51,6 @@
     <ClCompile Include="Direction.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="NameGenerator.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="_functions.h">
       <Filter>Headerdateien</Filter>
     </ClCompile>
@@ -67,6 +64,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Match.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,9 +104,6 @@
     <ClInclude Include="Direction.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="NameGenerator.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Pitch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -117,6 +114,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Match.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

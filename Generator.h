@@ -5,16 +5,22 @@
 #include <fstream>
 #include <ctime>
 
+#include "Player.h"
+#include "Position.h"
+#include "Pitch.h"
+
 using std::string;
 using std::vector;
 
-class NameGenerator
+class Generator
 {
 public:
 
-	string getName();
+	Player getNewPlayer();
 
 private:
 
 	vector<string> names;
+	string getName();
+
 };

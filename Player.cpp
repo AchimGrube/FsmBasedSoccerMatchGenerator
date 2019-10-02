@@ -2,6 +2,7 @@
 
 Player::Player()
 {
+	level = 0;
 	state = State::Idle;
 	playerHasBall = false;
 	_fsm = FiniteStateMachine();
@@ -16,6 +17,16 @@ Player::Player(string name) : Player()
 string Player::getName() const
 {
 	return name;
+}
+
+int Player::getLevel() const
+{
+	return level;
+}
+
+void Player::setLevel(int skillLevel)
+{
+	this->level = skillLevel;
 }
 
 std::unique_ptr<Position> Player::getTarget()

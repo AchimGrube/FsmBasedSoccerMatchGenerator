@@ -17,6 +17,9 @@ public:
 
 	string getName() const;
 
+	int getLevel() const;
+	void setLevel(int);
+
 	std::unique_ptr<Position> getTarget();
 	void setTarget(const Position&);
 
@@ -31,6 +34,7 @@ public:
 private:
 
 	string name;
+	int level;
 	Position target;
 	State state;
 	bool playerHasBall;

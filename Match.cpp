@@ -63,23 +63,18 @@ void Match::init()
 {
 	pitch = Pitch();
 
-	std::unique_ptr<NameGenerator> ng = std::make_unique<NameGenerator>();
+	std::unique_ptr<Generator> ng = std::make_unique<Generator>();
 	srand((unsigned)std::time(NULL));
 
-	Position startPosition;
 	for (size_t i = 0; i < teamA.size(); i++)
 	{
-		teamA.at(i) = Player(ng->getName());
-		startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
-		teamA.at(i).setPosition(startPosition);
+		teamA.at(i) = ng->getNewPlayer();
 		players.push_back(&teamA.at(i));
 	}
 
 	for (size_t i = 0; i < teamB.size(); i++)
 	{
-		teamB.at(i) = Player(ng->getName());
-		startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
-		teamB.at(i).setPosition(startPosition);
+		teamB.at(i) = ng->getNewPlayer();
 		players.push_back(&teamB.at(i));
 	}
 }
@@ -103,6 +98,7 @@ void Match::nextMinute()
 void Match::printMatchLines(Player & player)
 {
 	printf("Player: %s\n", player.getName().c_str());
+	printf("Level: %d\n", player.getLevel());
 	printf("Position: %d,%d\n", player.getPosition()->getX(), player.getPosition()->getY());
 	printf("has Ball: %s\n", player.hasBall() ? "true" : "false");
 	printf("Target: %d,%d\n", player.getTarget()->getX(), player.getTarget()->getY());

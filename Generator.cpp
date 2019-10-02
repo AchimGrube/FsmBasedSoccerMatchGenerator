@@ -1,6 +1,16 @@
-#include "NameGenerator.h"
+#include "Generator.h"
 
-string NameGenerator::getName()
+Player Generator::getNewPlayer()
+{
+	Player newPlayer(getName());
+	Position startPosition;
+	startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
+	newPlayer.setPosition(startPosition);
+	newPlayer.setLevel((rand() % 5) + 1);
+	return newPlayer;
+}
+
+string Generator::getName()
 {
 	if (names.size() == 0)
 	{
