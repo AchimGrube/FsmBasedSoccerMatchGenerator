@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <array>
 
 #include "Tile.h"
 
@@ -17,6 +18,7 @@ public:
 
 private:
 
-	Tile tiles[sizeX][sizeY];
+	std::array<std::array<Tile, sizeY>, sizeX> tiles;
+	//Tile tiles[sizeX][sizeY];
 };
 

@@ -6,12 +6,15 @@
 #include "Position.h"
 
 class Player;
+class Pitch;
 
 class IPlayerState abstract
 {
 public:
 
-	virtual void doAction(Player&, Ball&, Position&) = 0;
+	void enter(Player&, Pitch&);
+	virtual void doAction(Player&, Pitch&, Ball&, Position&) = 0;
+	void leave(Player&, Pitch&);
 
 private:
 

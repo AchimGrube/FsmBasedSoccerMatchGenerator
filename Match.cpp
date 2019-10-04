@@ -86,13 +86,13 @@ void Match::nextMinute()
 	for (auto& player : players)
 	{
 		printMatchLines(*player);
-		player->performRound(ball);
+		player->performRound(pitch, ball);
 	}
 	printf("Ball Position: %d,%d\n", ball.getPosition()->getX(), ball.getPosition()->getY());
 
 	addMinute();
 
-	std::this_thread::sleep_for(std::chrono::seconds(3));
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 void Match::printMatchLines(Player & player)

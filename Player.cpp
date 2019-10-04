@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Pitch.h"
 
 Player::Player()
 {
@@ -59,8 +60,10 @@ void Player::hasBall(bool hasBall)
 	this->playerHasBall = hasBall;
 }
 
-void Player::performRound(Ball& ball)
+void Player::performRound(Pitch& pitch, Ball& ball)
 {
 	_playerState = std::unique_ptr<IPlayerState>(_fsm.updateState(getState()));
-	_playerState->doAction(*this, ball, target);
+	_playerState->enter(*this, pitch);
+	_playerState->doAction(*this, pitch, ball, target);
+	_playerState->leave(*this, pitch);
 }

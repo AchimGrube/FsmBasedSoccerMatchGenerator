@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void PlayerStateIdle::doAction(Player& player, Ball& ball, Position& target)
+void PlayerStateIdle::doAction(Player& player, Pitch& pitch, Ball& ball, Position& target)
 {
 	if (!player.hasBall())
 	{

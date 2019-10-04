@@ -8,6 +8,8 @@
 
 using std::string;
 
+class Pitch;
+
 class Player : public Entity
 {
 public:
@@ -29,10 +31,10 @@ public:
 	bool hasBall() const;
 	void hasBall(bool);
 
-	void performRound(Ball&);
+	void performRound(Pitch&, Ball&);
 
 private:
-
+	
 	string name;
 	int level;
 	Position target;

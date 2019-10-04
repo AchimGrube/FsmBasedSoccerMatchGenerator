@@ -1,6 +1,6 @@
 #include "PlayerStateAttack.h"
 
-void PlayerStateAttack::doAction(Player& player, Ball& ball, Position& target)
+void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball, Position& target)
 {
 
 }
