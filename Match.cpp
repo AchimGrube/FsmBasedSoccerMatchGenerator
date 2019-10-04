@@ -114,7 +114,7 @@ void Match::setConsoleCursorPosition(int x, int y, bool line)
 	{
 		for (int x = 0; x < 21; x++)
 		{
-			for (int y = 0; y < 16; y++)
+			for (int y = 0; y < 20; y++)
 			{
 				coord.X = x;
 				coord.Y = y;
