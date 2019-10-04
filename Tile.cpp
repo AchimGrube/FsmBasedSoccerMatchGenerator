@@ -22,23 +22,23 @@ int Tile::getY() const
 	return y;
 }
 
-std::list<Player*> Tile::getPlayers()
+std::list<std::shared_ptr<Player>> Tile::getPlayers()
 {
 	return players;
 }
 
 void Tile::addPlayer(Player& player)
 {
-	players.push_back(&player);
+	players.push_back(std::make_shared<Player>(player));
 }
 
 void Tile::removePlayer(Player& player)
 {
-	Player* remove = nullptr;
+	std::shared_ptr<Player> remove = nullptr;
 
 	for (auto element : players)
 	{
-		if (element == &player)
+		if (element == std::make_shared<Player>(player))
 		{
 			remove = element;
 		}
@@ -48,8 +48,6 @@ void Tile::removePlayer(Player& player)
 	{
 		players.remove(remove);
 	}
-
-	delete remove;
 }
 
 Area Tile::getArea()

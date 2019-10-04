@@ -19,7 +19,7 @@ public:
 	int getX() const;
 	int getY() const;
 
-	std::list<Player*> getPlayers();
+	std::list<std::shared_ptr<Player>> getPlayers();
 	void addPlayer(Player&);
 	void removePlayer(Player&);
 
@@ -31,6 +31,6 @@ private:
 	int x, y;
 	Area area;
 
-	std::list<Player*> players;
+	std::list<std::shared_ptr<Player>> players;
 };
 
