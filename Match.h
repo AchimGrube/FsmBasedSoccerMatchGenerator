@@ -27,7 +27,7 @@ public:
 
 	Match();
 	
-	std::unique_ptr<Ball> getBall();
+	std::shared_ptr<Ball> getBall();
 
 	int getLength() const;
 

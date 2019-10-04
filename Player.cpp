@@ -30,9 +30,9 @@ void Player::setLevel(int skillLevel)
 	this->level = skillLevel;
 }
 
-std::unique_ptr<Position> Player::getTarget()
+std::shared_ptr<Position> Player::getTarget()
 {
-	return std::make_unique<Position>(target);
+	return std::make_shared<Position>(target);
 }
 
 void Player::setTarget(const Position& target)
@@ -62,8 +62,8 @@ void Player::hasBall(bool hasBall)
 
 void Player::performRound(Pitch& pitch, Ball& ball)
 {
-	_playerState = std::unique_ptr<IPlayerState>(_fsm.updateState(getState()));
-	_playerState->enter(*this, pitch);
+	_playerState = std::shared_ptr<IPlayerState>(_fsm.updateState(getState()));
+	//_playerState->enter(*this, pitch);
 	_playerState->doAction(*this, pitch, ball, target);
-	_playerState->leave(*this, pitch);
+	//_playerState->leave(*this, pitch);
 }

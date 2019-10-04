@@ -14,11 +14,10 @@ public:
 
 	Pitch();
 
-	std::unique_ptr<Tile> getTile(int, int);
+	std::shared_ptr<Tile> getTile(int, int);
 
 private:
 
 	std::array<std::array<Tile, sizeY>, sizeX> tiles;
-	//Tile tiles[sizeX][sizeY];
 };
 

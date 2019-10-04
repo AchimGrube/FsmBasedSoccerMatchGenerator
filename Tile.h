@@ -20,8 +20,8 @@ public:
 	int getY() const;
 
 	std::list<Player*> getPlayers();
-	void addPlayer(Player*);
-	void removePlayer(Player*);
+	void addPlayer(Player&);
+	void removePlayer(Player&);
 
 	Area getArea();
 	void setArea(Area);

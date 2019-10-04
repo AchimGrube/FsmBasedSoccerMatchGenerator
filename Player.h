@@ -22,7 +22,7 @@ public:
 	int getLevel() const;
 	void setLevel(int);
 
-	std::unique_ptr<Position> getTarget();
+	std::shared_ptr<Position> getTarget();
 	void setTarget(const Position&);
 
 	State getState() const;
@@ -41,6 +41,6 @@ private:
 	State state;
 	bool playerHasBall;
 
-	std::unique_ptr<IPlayerState> _playerState;
+	std::shared_ptr<IPlayerState> _playerState;
 	FiniteStateMachine _fsm;
 };

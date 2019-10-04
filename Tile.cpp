@@ -27,18 +27,18 @@ std::list<Player*> Tile::getPlayers()
 	return players;
 }
 
-void Tile::addPlayer(Player* player)
+void Tile::addPlayer(Player& player)
 {
-	players.push_back(player);
+	players.push_back(&player);
 }
 
-void Tile::removePlayer(Player* player)
+void Tile::removePlayer(Player& player)
 {
 	Player* remove = nullptr;
 
 	for (auto element : players)
 	{
-		if (element == player)
+		if (element == &player)
 		{
 			remove = element;
 		}

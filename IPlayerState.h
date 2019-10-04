@@ -12,9 +12,9 @@ class IPlayerState abstract
 {
 public:
 
-	void enter(Player&, Pitch&);
+	void beginTurn(Player&, Pitch&);
 	virtual void doAction(Player&, Pitch&, Ball&, Position&) = 0;
-	void leave(Player&, Pitch&);
+	void endTurn(Player&, Pitch&);
 
 private:
 

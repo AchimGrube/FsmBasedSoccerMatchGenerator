@@ -8,9 +8,9 @@ Match::Match()
 	ball.setPosition(*ballPos);
 }
 
-std::unique_ptr<Ball> Match::getBall()
+std::shared_ptr<Ball> Match::getBall()
 {
-	return std::make_unique<Ball>(ball);
+	return std::make_shared<Ball>(ball);
 }
 
 int Match::getLength() const
@@ -63,7 +63,7 @@ void Match::init()
 {
 	pitch = Pitch();
 
-	std::unique_ptr<Generator> ng = std::make_unique<Generator>();
+	std::shared_ptr<Generator> ng = std::make_shared<Generator>();
 	srand((unsigned)std::time(NULL));
 
 	for (size_t i = 0; i < teamA.size(); i++)

@@ -13,7 +13,7 @@ class FiniteStateMachine
 {
 public:
 
-	std::unique_ptr<IPlayerState> updateState(State state);
+	std::shared_ptr<IPlayerState> updateState(State state);
 
 private:
 

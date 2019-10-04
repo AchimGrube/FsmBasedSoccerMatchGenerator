@@ -1,9 +1,9 @@
 #include "Entity.h"
 #include "_functions.h"
 
-std::unique_ptr<Position> Entity::getPosition()
+std::shared_ptr<Position> Entity::getPosition()
 {
-	return std::make_unique<Position>(position);
+	return std::make_shared<Position>(position);
 }
 
 void Entity::setPosition(const Position& position)
@@ -11,9 +11,9 @@ void Entity::setPosition(const Position& position)
 	this->position = position;
 }
 
-std::unique_ptr<Direction> Entity::getDirection()
+std::shared_ptr<Direction> Entity::getDirection()
 {
-	return std::make_unique<Direction>(direction);
+	return std::make_shared<Direction>(direction);
 
 }
 
