@@ -26,7 +26,7 @@ class Match
 public:
 
 	Match();
-	
+
 	std::shared_ptr<Ball> getBall();
 
 	int getLength() const;
@@ -34,10 +34,11 @@ public:
 	int getMinute() const;
 	void addMinute();
 
-	pair<int, int> getScore() const;
-	void setScore(int, int);
-
 	bool hasEnded() const;
+
+	void addGoalTeamA();
+	void addGoalTeamB();
+	void resetScore();
 
 	void start();
 
@@ -52,9 +53,10 @@ private:
 	Ball ball;
 
 	int length, minute;
+
 	pair<int, int> score;
-	
-	void init(); 
+
+	void init();
 	void nextMinute();
 	void printMatchLines(Player&);
 	void setConsoleCursorPosition(int, int, bool);

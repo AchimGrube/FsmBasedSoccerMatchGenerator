@@ -10,7 +10,7 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	auto test = pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea();
 
-	if (pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea() == Area::Penalty)
+	if (pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea() == Area::Penalty && player.hasBall())
 	{
 		int rnd = rand() % (10 / player.getLevel()) + 1;
 		
@@ -18,9 +18,18 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 		std::cout << player.getName() << " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " << chance << "%)" << std::endl;
 
+		int rndGoalie = rand() % 2;
+
 		if (rnd == 1)
 		{
-			std::cout << "TOOOOR!!!" << std::endl;
+			if (rndGoalie == 0)
+			{
+				std::cout << "TOOOOR!!!" << std::endl;
+			}
+			else
+			{
+				std::cout << "Der Torwart haelt den Ball." << std::endl;
+			}
 		}
 		else
 		{
@@ -29,7 +38,8 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 		player.setState(State::Idle);
 		player.hasBall(false);
-		ball.setPosition(Position(8, 5));
+		ball.setPosition(Position(rand() % Pitch::sizeX, rand() % Pitch::sizeY));
+		player.setTarget(*ball.getPosition());
 	}
 
 	endTurn(player, pitch);

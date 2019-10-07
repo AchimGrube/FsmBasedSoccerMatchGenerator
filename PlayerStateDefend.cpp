@@ -12,6 +12,11 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	for (std::shared_ptr<Player> opponent : playerList)
 	{
+		if (!opponent->hasBall())
+		{
+			continue;
+		}
+
 		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName() << std::endl;
 		
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
@@ -22,9 +27,11 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			
 			player.hasBall(true);
 			player.setState(State::Attack);
+			player.setTarget(*player.getOpponentGoalPosition());
 
 			opponent->hasBall(false);
 			opponent->setState(State::Idle);
+			opponent->setTarget(Position(0,0));
 		}
 		else
 		{
@@ -32,9 +39,11 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			
 			player.hasBall(false);
 			player.setState(State::Idle);
+			player.setTarget(Position(0,0));
 
 			opponent->hasBall(true);
 			opponent->setState(State::Attack);
+			player.setTarget(*player.getOpponentGoalPosition());
 		}
 
 	}

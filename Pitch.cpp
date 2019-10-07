@@ -28,6 +28,10 @@ Pitch::Pitch()
 			{
 				tiles.at(x).at(y).setArea(Area::Center);
 			}
+			else
+			{
+				tiles.at(x).at(y).setArea(Area::Center);
+			}
 		}
 	}
 }
@@ -56,6 +60,7 @@ void Pitch::removePlayerOnTile(Player& player, int x, int y)
 		if (element->getName() == player.getName())
 		{
 			remove = element;
+			break;
 		}
 	}
 

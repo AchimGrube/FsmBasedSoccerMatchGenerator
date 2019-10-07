@@ -10,11 +10,9 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 	
 	if (player.getPosition()->getX() == ball.getPosition()->getX() && player.getPosition()->getY() == ball.getPosition()->getY())
 	{
-		if (pitch.getPlayersOnTiles(player.getPosition()->getX(), player.getPosition()->getY())->size() > 0)
+		if (pitch.getPlayersOnTiles(player.getPosition()->getX(), player.getPosition()->getY())->size() > 0 && !player.hasBall())
 		{
 			player.setState(State::Defend);
-			player.hasBall(false);
-			player.setTarget(*ball.getPosition());
 		}
 		else
 		{

@@ -4,8 +4,7 @@ Match::Match()
 {
 	length = 90;
 	minute = 1;
-	auto ballPos = new Position(Pitch::sizeX / 2, Pitch::sizeY / 2);
-	ball.setPosition(*ballPos);
+	ball.setPosition(Position(rand() % Pitch::sizeX, rand() % Pitch::sizeY));
 }
 
 std::shared_ptr<Ball> Match::getBall()
@@ -28,20 +27,24 @@ void Match::addMinute()
 	minute++;
 }
 
-pair<int, int> Match::getScore() const
-{
-	return score;
-}
-
-void Match::setScore(int scoreTeamA, int scoreTeamB)
-{
-	score.first = scoreTeamA;
-	score.second = scoreTeamB;
-}
-
 bool Match::hasEnded() const
 {
 	return minute > length;
+}
+
+void Match::addGoalTeamA()
+{
+	score.first++;
+}
+
+void Match::addGoalTeamB()
+{
+	score.second++;
+}
+
+void Match::resetScore()
+{
+	score.first = score.second = 0;
 }
 
 void Match::start()
@@ -57,6 +60,8 @@ void Match::start()
 		//cout << "==========" << endl << endl;
 		nextMinute();
 	}
+
+	std::cout << endl << "Das Spiel endete " << score.first << ":" << score.second << endl << endl;
 }
 
 void Match::init()
@@ -98,11 +103,17 @@ void Match::nextMinute()
 		player->performRound(pitch, ball);
 	}
 
+	if (pitch.getTile(ball.getPosition()->getX(), ball.getPosition()->getY())->getArea() == Area::Out)
+	{
+		std::cout << "Der Ball rollt ins Aus." << std::endl;
+		ball.setPosition(Position(8, 5));
+	}
+
 	addMinute();
 
 	std::cout << std::endl;
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 }
 
 void Match::printMatchLines(Player & player)
@@ -116,11 +127,11 @@ void Match::printMatchLines(Player & player)
 	printf("Area: %d\n\n", pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea());
 }
 
-void Match::setConsoleCursorPosition(int x, int y, bool line)
+void Match::setConsoleCursorPosition(int x, int y, bool clearLines)
 {
 	COORD coord;
 
-	if (line)
+	if (clearLines)
 	{
 		for (int x = 0; x < 21; x++)
 		{

@@ -7,6 +7,7 @@
 
 class Player;
 class Pitch;
+class Match;
 
 class IPlayerState abstract
 {
