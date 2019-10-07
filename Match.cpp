@@ -52,9 +52,9 @@ void Match::start()
 
 	while (!hasEnded())
 	{
-		setConsoleCursorPosition(0, 0, true);
+		//setConsoleCursorPosition(0, 0, true);
 		cout << "Minute " << minute << ": " << endl;
-		cout << "==========" << endl << endl;
+		//cout << "==========" << endl << endl;
 		nextMinute();
 	}
 }
@@ -66,33 +66,43 @@ void Match::init()
 	std::shared_ptr<Generator> ng = std::make_shared<Generator>();
 	srand((unsigned)std::time(NULL));
 
+	Position teamAGoal = Position(0, 5);
+	Position teamBGoal = Position(16, 5);
+
 	for (size_t i = 0; i < teamA.size(); i++)
 	{
 		teamA.at(i) = ng->getNewPlayer();
+		teamA.at(i).setOpponentGoalPosition(teamBGoal);
+		pitch.addPlayerOnTile(teamA.at(i), teamA.at(i).getPosition()->getX(), teamA.at(i).getPosition()->getY());
 		players.push_back(&teamA.at(i));
 	}
 
 	for (size_t i = 0; i < teamB.size(); i++)
 	{
 		teamB.at(i) = ng->getNewPlayer();
+		teamB.at(i).setOpponentGoalPosition(teamAGoal);
+		pitch.addPlayerOnTile(teamB.at(i), teamB.at(i).getPosition()->getX(), teamB.at(i).getPosition()->getY());
 		players.push_back(&teamB.at(i));
 	}
 }
 
 void Match::nextMinute()
 {
-	//std::random_shuffle(players.begin(), players.end());
+	std::random_shuffle(players.begin(), players.end());
+
+	//printf("Ball Position: %d,%d\n\n", ball.getPosition()->getX(), ball.getPosition()->getY());
 
 	for (auto& player : players)
 	{
-		printMatchLines(*player);
+		//printMatchLines(*player);
 		player->performRound(pitch, ball);
 	}
-	printf("Ball Position: %d,%d\n", ball.getPosition()->getX(), ball.getPosition()->getY());
 
 	addMinute();
 
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+	std::cout << std::endl;
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 void Match::printMatchLines(Player & player)

@@ -8,7 +8,7 @@ class PlayerStateDefend :	public IPlayerState
 {
 public:
 
-	void doAction(Player&, Pitch&, Ball&, Position&) override;
+	void doAction(Player&, Pitch&, Ball&) override;
 
 private:
 

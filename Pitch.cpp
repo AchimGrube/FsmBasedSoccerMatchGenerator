@@ -51,9 +51,9 @@ void Pitch::removePlayerOnTile(Player& player, int x, int y)
 {
 	std::shared_ptr<Player> remove = nullptr;
 
-	for (auto element : playersOnTiles.at(x).at(y))
+	for (std::shared_ptr<Player> element : playersOnTiles.at(x).at(y))
 	{
-		if (element == std::make_shared<Player>(player))
+		if (element->getName() == player.getName())
 		{
 			remove = element;
 		}

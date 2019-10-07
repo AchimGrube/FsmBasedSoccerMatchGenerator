@@ -31,6 +31,9 @@ public:
 	bool hasBall() const;
 	void hasBall(bool);
 
+	std::shared_ptr<Position> getOpponentGoalPosition();
+	void setOpponentGoalPosition(Position&);
+
 	void performRound(Pitch&, Ball&);
 
 private:
@@ -40,6 +43,7 @@ private:
 	Position target;
 	State state;
 	bool playerHasBall;
+	Position opponentGoalPosition;
 
 	std::shared_ptr<IPlayerState> _playerState;
 	FiniteStateMachine _fsm;

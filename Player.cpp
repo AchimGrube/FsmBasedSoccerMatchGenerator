@@ -60,10 +60,20 @@ void Player::hasBall(bool hasBall)
 	this->playerHasBall = hasBall;
 }
 
+std::shared_ptr<Position> Player::getOpponentGoalPosition()
+{
+	return std::make_shared<Position>(opponentGoalPosition);
+}
+
+void Player::setOpponentGoalPosition(Position& opponentGoalPosition)
+{
+	this->opponentGoalPosition = opponentGoalPosition;
+}
+
 void Player::performRound(Pitch& pitch, Ball& ball)
 {
 	_playerState = std::shared_ptr<IPlayerState>(_fsm.updateState(getState()));
 	//_playerState->enter(*this, pitch);
-	_playerState->doAction(*this, pitch, ball, target);
+	_playerState->doAction(*this, pitch, ball);
 	//_playerState->leave(*this, pitch);
 }

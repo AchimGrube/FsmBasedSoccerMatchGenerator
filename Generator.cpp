@@ -7,7 +7,7 @@ Player Generator::getNewPlayer()
 	startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
 	newPlayer.setPosition(startPosition);
 	//
-	newPlayer.setPosition(Position(8, 5));
+	//newPlayer.setPosition(Position(8, 5));
 	//
 	newPlayer.setLevel((rand() % 5) + 1);
 	return newPlayer;
