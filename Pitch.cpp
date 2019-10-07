@@ -35,5 +35,32 @@ Pitch::Pitch()
 std::shared_ptr<Tile> Pitch::getTile(int x, int y)
 {
 	return std::make_shared<Tile>(tiles.at(x).at(y));
-	//return std::shared_ptr<Tile>(&tiles.at(x).at(y));
+}
+
+std::shared_ptr<std::list<std::shared_ptr<Player>>> Pitch::getPlayersOnTiles(int x, int y)
+{
+	return std::make_shared<std::list<std::shared_ptr<Player>>>(playersOnTiles.at(x).at(y));
+}
+
+void Pitch::addPlayerOnTile(Player& player, int x, int y)
+{
+	playersOnTiles.at(x).at(y).push_back(std::make_shared<Player>(player));
+}
+
+void Pitch::removePlayerOnTile(Player& player, int x, int y)
+{
+	std::shared_ptr<Player> remove = nullptr;
+
+	for (auto element : playersOnTiles.at(x).at(y))
+	{
+		if (element == std::make_shared<Player>(player))
+		{
+			remove = element;
+		}
+	}
+
+	if (remove != nullptr)
+	{
+		playersOnTiles.at(x).at(y).remove(remove);
+	}
 }

@@ -3,10 +3,10 @@
 
 void IPlayerState::beginTurn(Player& player, Pitch& pitch)
 {
-	pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->removePlayer(player);
+	pitch.addPlayerOnTile(player, player.getPosition()->getX(), player.getPosition()->getY());
 }
 
 void IPlayerState::endTurn(Player& player, Pitch& pitch)
 {
-	pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->addPlayer(player);
+	pitch.removePlayerOnTile(player, player.getPosition()->getX(), player.getPosition()->getY());
 }

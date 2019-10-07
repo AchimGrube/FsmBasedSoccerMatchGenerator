@@ -19,10 +19,6 @@ public:
 	int getX() const;
 	int getY() const;
 
-	std::list<std::shared_ptr<Player>> getPlayers();
-	void addPlayer(Player&);
-	void removePlayer(Player&);
-
 	Area getArea();
 	void setArea(Area);
 
@@ -30,7 +26,5 @@ private:
 
 	int x, y;
 	Area area;
-
-	std::list<std::shared_ptr<Player>> players;
 };
 
