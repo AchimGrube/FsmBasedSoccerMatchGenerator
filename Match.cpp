@@ -1,5 +1,7 @@
 #include "Match.h"
 
+pair<int, int> Match::score;
+
 Match::Match()
 {
 	length = 90;
@@ -51,12 +53,15 @@ void Match::start()
 {
 	init();
 
+	Match::resetScore();
+
 	cout << endl << "Spielstart:" << endl << endl;
 
 	while (!hasEnded())
 	{
 		//setConsoleCursorPosition(0, 0, true);
-		cout << "Minute " << minute << ": " << endl;
+		//cout << "Minute " << minute << "   " << "[" << score.first << ":" << score.second << "]" << endl;
+		printf("Minute %02d   [%d:%d]\n", minute, score.first, score.second);
 		//cout << "==========" << endl << endl;
 		nextMinute();
 	}
@@ -113,7 +118,8 @@ void Match::nextMinute()
 
 	std::cout << std::endl;
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(250));
+	//std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	//std::cin.ignore();
 }
 
 void Match::printMatchLines(Player & player)

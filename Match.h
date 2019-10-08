@@ -36,16 +36,17 @@ public:
 
 	bool hasEnded() const;
 
-	void addGoalTeamA();
-	void addGoalTeamB();
-	void resetScore();
+	static void addGoalTeamA();
+	static void addGoalTeamB();
+	static void resetScore();
 
 	void start();
 
+
 private:
 
-	array<Player, 1> teamA;
-	array<Player, 1> teamB;
+	array<Player, 10> teamA;
+	array<Player, 10> teamB;
 
 	vector<Player*> players;
 
@@ -54,10 +55,10 @@ private:
 
 	int length, minute;
 
-	pair<int, int> score;
-
 	void init();
 	void nextMinute();
 	void printMatchLines(Player&);
 	void setConsoleCursorPosition(int, int, bool);
+
+	static pair<int, int> score;
 };
