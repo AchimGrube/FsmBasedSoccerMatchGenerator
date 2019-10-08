@@ -41,23 +41,23 @@ std::shared_ptr<Tile> Pitch::getTile(int x, int y)
 	return std::make_shared<Tile>(tiles.at(x).at(y));
 }
 
-std::shared_ptr<std::list<std::shared_ptr<Player>>> Pitch::getPlayersOnTiles(int x, int y)
+std::list<Player*>* Pitch::getPlayersOnTiles(int x, int y)
 {
-	return std::make_shared<std::list<std::shared_ptr<Player>>>(playersOnTiles.at(x).at(y));
+	return &playersOnTiles.at(x).at(y);
 }
 
 void Pitch::addPlayerOnTile(Player& player, int x, int y)
 {
-	playersOnTiles.at(x).at(y).push_back(std::make_shared<Player>(player));
+	playersOnTiles.at(x).at(y).push_back(&player);
 }
 
 void Pitch::removePlayerOnTile(Player& player, int x, int y)
 {
-	std::shared_ptr<Player> remove = nullptr;
+	Player* remove = nullptr;
 
-	for (std::shared_ptr<Player> element : playersOnTiles.at(x).at(y))
+	for (auto element : playersOnTiles.at(x).at(y))
 	{
-		if (element->getName() == player.getName())
+		if (element == &player)
 		{
 			remove = element;
 			break;

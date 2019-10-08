@@ -1,5 +1,4 @@
 #include "PlayerStateAttack.h"
-#include <iostream>
 #include "Match.h"
 
 void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
@@ -17,14 +16,15 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		int chance = 10 * player.getLevel();
 
 		std::cout << player.getName() << " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " << chance << "%)" << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-		int rndGoalie = rand() % 2;
+		int rndGoalie = rand() % (10 / ((rand() % 5) + 1)) + 1;
 
 		if (rndPlayer == 1)
 		{
-			if (rndGoalie == 0)
+			if (rndPlayer <= rndGoalie)
 			{
-				std::cout << "TOOOOR!!!" << std::endl;
+				std::cout << "TOOOOR!!!\n\n";
 				if (player.getOpponentGoalPosition()->getX() > 8)
 				{
 					Match::addGoalTeamA();
@@ -36,19 +36,35 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 			}
 			else
 			{
-				std::cout << "Der Torwart haelt den Ball." << std::endl;
+				std::cout << "Der Torwart haelt den Ball.\n\n";
 			}
 		}
 		else
 		{
-			std::cout << "Daneben!" << std::endl;
+			std::cout << "Daneben!\n\n";
 		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
 		player.hasBall(false);
 		player.setState(State::Idle);
-		player.setTarget(*ball.getPosition());
+		player.setTarget(Position(0, 0));
 
 		ball.setPosition(Position(8, 5));
+
+		for (int x = 0; x < Pitch::sizeX; x++)
+		{
+			for (int y = 0; y < Pitch::sizeY; y++)
+			{
+				auto playerList = *pitch.getPlayersOnTiles(x, y);
+
+				for (auto element : playerList)
+				{
+					element->hasBall(false);
+					element->setState(State::Idle);
+					element->setTarget(Position(0, 0));
+				}
+			}
+		}
 	}
 
 	endTurn(player, pitch);

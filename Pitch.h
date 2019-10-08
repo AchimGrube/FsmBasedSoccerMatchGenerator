@@ -17,13 +17,13 @@ public:
 
 	std::shared_ptr<Tile> getTile(int, int);
 
-	std::shared_ptr<std::list<std::shared_ptr<Player>>> getPlayersOnTiles(int, int);
+	std::list<Player*>* getPlayersOnTiles(int, int);
 	void addPlayerOnTile(Player&, int, int);
 	void removePlayerOnTile(Player&, int, int);
 
 private:
 
 	std::array<std::array<Tile, sizeY>, sizeX> tiles;
-	std::array<std::array<std::list<std::shared_ptr<Player>>, sizeY>, sizeX> playersOnTiles;
+	std::array<std::array<std::list<Player*>, sizeY>, sizeX> playersOnTiles;
 };
 

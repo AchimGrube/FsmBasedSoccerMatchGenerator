@@ -9,20 +9,21 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	auto playerList = *pitch.getPlayersOnTiles(player.getPosition()->getX(), player.getPosition()->getY());
 
-	for (std::shared_ptr<Player>& opponent : playerList)
+	for (auto opponent : playerList)
 	{
-		if (!opponent->hasBall())
+		if (!opponent->hasBall() || player.getOpponentGoalPosition() == opponent->getOpponentGoalPosition())
 		{
 			continue;
 		}
 
 		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName() << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
 
 		if (rndPlayer >= rndOpponent)
 		{
-			std::cout << player.getName() << " gewinnt und startet einen Angriff." << std::endl;
+			std::cout << player.getName() << " gewinnt und startet einen Angriff.\n\n";
 
 			player.hasBall(true);
 			player.setState(State::Attack);
@@ -34,7 +35,7 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 		else
 		{
-			std::cout << opponent->getName() << " gewinnt und bleibt am Ball." << std::endl;
+			std::cout << opponent->getName() << " gewinnt und bleibt am Ball.\n\n";
 
 			player.hasBall(false);
 			player.setState(State::Idle);
@@ -44,8 +45,11 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			opponent->setState(State::Attack);
 			opponent->setTarget(*opponent->getOpponentGoalPosition());
 		}
-
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
+
+	player.setState(State::Move);
+	player.setTarget(*ball.getPosition());
 
 	endTurn(player, pitch);
 }

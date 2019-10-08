@@ -61,7 +61,7 @@ void Match::start()
 	{
 		//setConsoleCursorPosition(0, 0, true);
 		//cout << "Minute " << minute << "   " << "[" << score.first << ":" << score.second << "]" << endl;
-		printf("Minute %02d   [%d:%d]\n", minute, score.first, score.second);
+		printf("### Minute %02d   [%d:%d] ###\n\n", minute, score.first, score.second);
 		//cout << "==========" << endl << endl;
 		nextMinute();
 	}
@@ -83,7 +83,7 @@ void Match::init()
 	{
 		teamA.at(i) = ng->getNewPlayer();
 		teamA.at(i).setOpponentGoalPosition(teamBGoal);
-		pitch.addPlayerOnTile(teamA.at(i), teamA.at(i).getPosition()->getX(), teamA.at(i).getPosition()->getY());
+		//pitch.addPlayerOnTile(teamA.at(i), teamA.at(i).getPosition()->getX(), teamA.at(i).getPosition()->getY());
 		players.push_back(&teamA.at(i));
 	}
 
@@ -91,7 +91,7 @@ void Match::init()
 	{
 		teamB.at(i) = ng->getNewPlayer();
 		teamB.at(i).setOpponentGoalPosition(teamAGoal);
-		pitch.addPlayerOnTile(teamB.at(i), teamB.at(i).getPosition()->getX(), teamB.at(i).getPosition()->getY());
+		//pitch.addPlayerOnTile(teamB.at(i), teamB.at(i).getPosition()->getX(), teamB.at(i).getPosition()->getY());
 		players.push_back(&teamB.at(i));
 	}
 }
@@ -110,15 +110,15 @@ void Match::nextMinute()
 
 	if (pitch.getTile(ball.getPosition()->getX(), ball.getPosition()->getY())->getArea() == Area::Out)
 	{
-		std::cout << "Der Ball rollt ins Aus." << std::endl;
+		std::cout << "Der Ball rollt ins Aus.\n\n";
 		ball.setPosition(Position(8, 5));
 	}
 
 	addMinute();
 
-	std::cout << std::endl;
+	//std::cout << std::endl;
 
-	//std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	//std::cin.ignore();
 }
 
