@@ -20,6 +20,11 @@ using std::vector;
 using std::pair;
 using std::array;
 
+enum class TextSpeed
+{
+	Instant = 0, Fast = 250, Normal = 500, Slow = 1000
+};
+
 class Match
 {
 
@@ -42,6 +47,7 @@ public:
 
 	void start();
 
+	static int textSpeed;
 
 private:
 

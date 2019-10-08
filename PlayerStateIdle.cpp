@@ -1,7 +1,5 @@
 #include "PlayerStateIdle.h"
 
-#include <iostream>
-
 void PlayerStateIdle::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
 	beginTurn(player, pitch);

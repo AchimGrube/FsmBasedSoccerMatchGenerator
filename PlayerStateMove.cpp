@@ -1,5 +1,5 @@
 #include "PlayerStateMove.h"
-#include <iostream>
+#include "Match.h"
 
 void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
@@ -39,8 +39,8 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 		else
 		{
-			std::cout << player.getName() << " schnappt sich den Ball und startet einen Angriff.\n\n";
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::cout << player.getName() << " holt sich den frei liegenden Ball.\n\n";
+			std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
 			player.hasBall(true);
 			player.setState(State::Attack);
 			player.setTarget(*player.getOpponentGoalPosition());

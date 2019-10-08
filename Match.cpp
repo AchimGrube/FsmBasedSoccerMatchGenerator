@@ -1,6 +1,7 @@
 #include "Match.h"
 
 pair<int, int> Match::score;
+int Match::textSpeed;
 
 Match::Match()
 {
@@ -71,6 +72,8 @@ void Match::start()
 
 void Match::init()
 {
+	textSpeed = (int)TextSpeed::Instant;
+
 	pitch = Pitch();
 
 	std::shared_ptr<Generator> ng = std::make_shared<Generator>();
@@ -118,7 +121,7 @@ void Match::nextMinute()
 
 	//std::cout << std::endl;
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+	std::this_thread::sleep_for(std::chrono::milliseconds(textSpeed * 2));
 	//std::cin.ignore();
 }
 

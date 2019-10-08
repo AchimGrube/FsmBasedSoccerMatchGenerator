@@ -1,5 +1,5 @@
 #include "PlayerStateDefend.h"
-#include <iostream>
+#include "Match.h"
 
 void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
@@ -11,19 +11,37 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	for (auto opponent : playerList)
 	{
-		if (!opponent->hasBall() || player.getOpponentGoalPosition() == opponent->getOpponentGoalPosition())
+		if (!opponent->hasBall())
 		{
 			continue;
 		}
 
-		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName() << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		if (player.getOpponentGoalPosition()->getX() == opponent->getOpponentGoalPosition()->getX())
+		{
+			if (player.getLevel() > opponent->getLevel())
+			{
+				std::cout << opponent->getName() << " passt den Ball zu " << player.getName() << "\n\n";
+				std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
+
+				player.hasBall(true);
+				player.setState(State::Attack);
+				player.setTarget(*player.getOpponentGoalPosition());
+
+				opponent->hasBall(false);
+				opponent->setState(State::Idle);
+				opponent->setTarget(Position(0, 0));
+			}
+			break;
+		}
+
+		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName();
+		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed * 2));
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
 
 		if (rndPlayer >= rndOpponent)
 		{
-			std::cout << player.getName() << " gewinnt und startet einen Angriff.\n\n";
+			std::cout << " und nimmt ihm den Ball ab.\n\n";
 
 			player.hasBall(true);
 			player.setState(State::Attack);
@@ -35,7 +53,7 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 		else
 		{
-			std::cout << opponent->getName() << " gewinnt und bleibt am Ball.\n\n";
+			std::cout << ", doch der bleibt am Ball.\n\n";
 
 			player.hasBall(false);
 			player.setState(State::Idle);
@@ -45,7 +63,7 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			opponent->setState(State::Attack);
 			opponent->setTarget(*opponent->getOpponentGoalPosition());
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
 	}
 
 	player.setState(State::Move);
