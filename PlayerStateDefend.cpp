@@ -17,7 +17,7 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 
 		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName() << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
 
@@ -45,7 +45,7 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			opponent->setState(State::Attack);
 			opponent->setTarget(*opponent->getOpponentGoalPosition());
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 
 	player.setState(State::Move);

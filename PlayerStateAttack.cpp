@@ -16,7 +16,7 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		int chance = 10 * player.getLevel();
 
 		std::cout << player.getName() << " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " << chance << "%)" << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 		int rndGoalie = rand() % (10 / ((rand() % 5) + 1)) + 1;
 
@@ -43,7 +43,7 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		{
 			std::cout << "Daneben!\n\n";
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 		player.hasBall(false);
 		player.setState(State::Idle);

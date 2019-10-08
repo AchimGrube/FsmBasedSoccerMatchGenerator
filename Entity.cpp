@@ -11,17 +11,6 @@ void Entity::setPosition(const Position& position)
 	this->position = position;
 }
 
-std::shared_ptr<Direction> Entity::getDirection()
-{
-	return std::make_shared<Direction>(direction);
-
-}
-
-void Entity::setDirection(const Direction& direction)
-{
-	this->direction = direction;
-}
-
 void Entity::move(Position& target)
 {
 	int stepX = Helper::sign(target.getX() - position.getX());

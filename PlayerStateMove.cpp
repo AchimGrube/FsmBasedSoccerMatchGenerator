@@ -40,7 +40,7 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 		else
 		{
 			std::cout << player.getName() << " schnappt sich den Ball und startet einen Angriff.\n\n";
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 			player.hasBall(true);
 			player.setState(State::Attack);
 			player.setTarget(*player.getOpponentGoalPosition());

@@ -48,9 +48,6 @@
     <ClCompile Include="Position.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Direction.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="_functions.h">
       <Filter>Headerdateien</Filter>
     </ClCompile>
@@ -58,9 +55,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="IMatchEvents.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Match.cpp">
@@ -101,16 +95,10 @@
     <ClInclude Include="Position.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Pitch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="IMatchEvents.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Match.h">
