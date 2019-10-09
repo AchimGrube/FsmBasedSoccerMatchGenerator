@@ -20,7 +20,9 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 		{
 			if (player.getLevel() > opponent->getLevel())
 			{
-				std::cout << opponent->getName() << " passt den Ball zu " << player.getName() << "\n\n";
+				string text = opponent->getName() + " passt den Ball zu " + player.getName() + "\n\n";
+				std::cout << text;
+				Match::addTextOutput(text);
 				std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
 
 				player.hasBall(true);
@@ -34,14 +36,18 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 			break;
 		}
 
-		std::cout << player.getName() << " geht in einen Zweikampf mit " << opponent->getName();
+		string text = player.getName() + " geht in einen Zweikampf mit " + opponent->getName();
+		std::cout << text;
+		Match::addTextOutput(text);
 		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed * 2));
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
 
 		if (rndPlayer >= rndOpponent)
 		{
-			std::cout << " und nimmt ihm den Ball ab.\n\n";
+			text = " und nimmt ihm den Ball ab.\n\n";
+			std::cout << text;
+			Match::addTextOutput(text);
 
 			player.hasBall(true);
 			player.setState(State::Attack);
@@ -53,7 +59,9 @@ void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 		else
 		{
-			std::cout << ", doch der bleibt am Ball.\n\n";
+			text = ", doch der bleibt am Ball.\n\n";
+			std::cout << text;
+			Match::addTextOutput(text);
 
 			player.hasBall(false);
 			player.setState(State::Idle);

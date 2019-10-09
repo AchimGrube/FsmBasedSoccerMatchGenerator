@@ -8,6 +8,9 @@
 #include <Windows.h>
 #include <array>
 #include <memory>
+#include <list>
+#include <fstream>
+#include <ctime>
 
 #include "Pitch.h"
 #include "Player.h"
@@ -45,6 +48,9 @@ public:
 	static void addGoalTeamB();
 	static void resetScore();
 
+	static std::list<string> getTextOutput();
+	static void addTextOutput(string);
+
 	void start();
 
 	static int textSpeed;
@@ -65,6 +71,8 @@ private:
 	void nextMinute();
 	void printMatchLines(Player&);
 	void setConsoleCursorPosition(int, int, bool);
+	void saveTextToFile();
 
 	static pair<int, int> score;
+	static std::list<string> textOutput;
 };

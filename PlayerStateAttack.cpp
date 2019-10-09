@@ -15,7 +15,9 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 		int chance = 10 * player.getLevel();
 
-		std::cout << player.getName() << " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " << chance << "%)" << std::endl;
+		string text = player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n";
+		std::cout << text;
+		Match::addTextOutput(text);
 		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed * 2));
 
 		int rndGoalie = rand() % (10 / ((rand() % 5) + 1)) + 1;
@@ -24,7 +26,9 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		{
 			if (rndPlayer <= rndGoalie)
 			{
-				std::cout << "TOOOOR!!!\n\n";
+				text = "TOOOOR!!!\n\n";
+				std::cout << text;
+				Match::addTextOutput(text);
 				if (player.getOpponentGoalPosition()->getX() > 8)
 				{
 					Match::addGoalTeamA();
@@ -36,12 +40,16 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 			}
 			else
 			{
-				std::cout << "Der Torwart haelt den Ball.\n\n";
+				text = "Der Torwart haelt den Ball.\n\n";
+				std::cout << text;
+				Match::addTextOutput(text);
 			}
 		}
 		else
 		{
-			std::cout << "Daneben!\n\n";
+			text = "Daneben!\n\n";
+			std::cout << text;
+			Match::addTextOutput(text);
 		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
 

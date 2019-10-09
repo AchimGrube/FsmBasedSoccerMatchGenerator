@@ -2,6 +2,7 @@
 
 pair<int, int> Match::score;
 int Match::textSpeed;
+std::list<string> Match::textOutput;
 
 Match::Match()
 {
@@ -50,6 +51,16 @@ void Match::resetScore()
 	score.first = score.second = 0;
 }
 
+std::list<string> Match::getTextOutput()
+{
+	return textOutput;
+}
+
+void Match::addTextOutput(string line)
+{
+	textOutput.push_back(line);
+}
+
 void Match::start()
 {
 	init();
@@ -62,17 +73,54 @@ void Match::start()
 	{
 		//setConsoleCursorPosition(0, 0, true);
 		//cout << "Minute " << minute << "   " << "[" << score.first << ":" << score.second << "]" << endl;
-		printf("### Minute %02d   [%d:%d] ###\n\n", minute, score.first, score.second);
+		char buffer[32];
+		snprintf(buffer, 32, "### Minute %02d   [%d:%d] ###\n\n", minute, score.first, score.second);
+		string text = buffer;
+		std::cout << text;
+		Match::addTextOutput(text);
 		//cout << "==========" << endl << endl;
 		nextMinute();
 	}
 
 	std::cout << endl << "Das Spiel endete " << score.first << ":" << score.second << endl << endl;
+	std::cout << "Soll das Spiel in einer Datei gespeichert werden? [j/n]";
+
+	string input = "";
+
+	while (input == "")
+	{
+		std::cin >> input;
+		std::cout << std::endl;
+
+		if (input == "j" || input == "J")
+		{
+			//std::cout << "Dateiname eingeben: ";
+			//std::cin >> input;
+
+			//if (input.substr(input.length() - 4) != ".txt")
+			//{
+			//	input += ".txt";
+			//}
+
+			saveTextToFile();
+			break;
+		}
+		else if (input == "n" || input == "N")
+		{
+			break;
+		}
+		else
+		{
+			input = "";
+		}
+	}
 }
 
 void Match::init()
 {
 	textSpeed = (int)TextSpeed::Instant;
+
+	textOutput.clear();
 
 	pitch = Pitch();
 
@@ -113,7 +161,9 @@ void Match::nextMinute()
 
 	if (pitch.getTile(ball.getPosition()->getX(), ball.getPosition()->getY())->getArea() == Area::Out)
 	{
-		std::cout << "Der Ball rollt ins Aus.\n\n";
+		string text = "Der Ball rollt ins Aus.\n\n";
+		std::cout << text;
+		addTextOutput(text);
 		ball.setPosition(Position(8, 5));
 	}
 
@@ -157,4 +207,32 @@ void Match::setConsoleCursorPosition(int x, int y, bool clearLines)
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+void Match::saveTextToFile()
+{
+	time_t time;
+	std::time(&time);
+	struct std::tm now;
+	localtime_s(&now, &time);
+
+	string filename = std::to_string(now.tm_mday) + "_" + std::to_string(now.tm_mon + 1) + "_" + std::to_string(now.tm_year + 1900)
+		+ "__" + std::to_string(now.tm_hour) + "_" + std::to_string(now.tm_min) + "_" + std::to_string(now.tm_sec)
+		+ ".txt";
+
+	std::ofstream file;
+
+	file.open(filename, std::ios::out);
+
+	if (file.is_open())
+	{
+		for (auto line : textOutput)
+		{
+			file << line;
+		}
+	}
+
+	file.close();
+
+	std::cout << filename + " erfolgreich gespeichert." << std::endl;
 }

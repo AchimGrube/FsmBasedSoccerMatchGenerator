@@ -39,7 +39,9 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 		else
 		{
-			std::cout << player.getName() << " holt sich den frei liegenden Ball.\n\n";
+			string text = player.getName() + " holt sich den frei liegenden Ball.\n\n";
+			std::cout << text;
+			Match::addTextOutput(text);
 			std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
 			player.hasBall(true);
 			player.setState(State::Attack);
