@@ -83,12 +83,13 @@ void Match::start()
 	}
 
 	std::cout << endl << "Das Spiel endete " << score.first << ":" << score.second << endl << endl;
-	std::cout << "Soll das Spiel in einer Datei gespeichert werden? [j/n]";
+	std::cout << "Soll das Spiel in einer Datei gespeichert werden?" << std::endl;
 
 	string input = "";
 
 	while (input == "")
 	{
+		std::cout << "[j / n] ";
 		std::cin >> input;
 		std::cout << std::endl;
 
@@ -118,7 +119,7 @@ void Match::start()
 
 void Match::init()
 {
-	textSpeed = (int)TextSpeed::Instant;
+	textSpeed = (int)TextSpeed::Slow;
 
 	textOutput.clear();
 

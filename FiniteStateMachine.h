@@ -6,7 +6,7 @@
 
 enum class State
 {
-	Idle, Move, Defend, Attack
+	Idle, Move, Interaction, Attack
 };
 
 class FiniteStateMachine

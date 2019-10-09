@@ -1,7 +1,7 @@
 #include "FiniteStateMachine.h"
 #include "PlayerStateIdle.h"
 #include "PlayerStateMove.h"
-#include "PlayerStateDefend.h"
+#include "PlayerStateInteraction.h"
 #include "PlayerStateAttack.h"
 
 std::shared_ptr<IPlayerState> FiniteStateMachine::updateState(State state)
@@ -12,8 +12,8 @@ std::shared_ptr<IPlayerState> FiniteStateMachine::updateState(State state)
 		return std::shared_ptr<IPlayerState>(new PlayerStateIdle);
 	case State::Move:
 		return std::shared_ptr<IPlayerState>(new PlayerStateMove);
-	case State::Defend:
-		return std::shared_ptr<IPlayerState>(new PlayerStateDefend);
+	case State::Interaction:
+		return std::shared_ptr<IPlayerState>(new PlayerStateInteraction);
 	case State::Attack:
 		return std::shared_ptr<IPlayerState>(new PlayerStateAttack);
 	default:

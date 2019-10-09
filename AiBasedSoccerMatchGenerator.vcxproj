@@ -163,7 +163,7 @@
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateAttack.cpp" />
-    <ClCompile Include="PlayerStateDefend.cpp" />
+    <ClCompile Include="PlayerStateInteraction.cpp" />
     <ClCompile Include="PlayerStateIdle.cpp" />
     <ClCompile Include="PlayerStateMove.cpp" />
     <ClCompile Include="Position.cpp" />
@@ -178,7 +178,7 @@
     <ClInclude Include="Pitch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateAttack.h" />
-    <ClInclude Include="PlayerStateDefend.h" />
+    <ClInclude Include="PlayerStateInteraction.h" />
     <ClInclude Include="PlayerStateIdle.h" />
     <ClInclude Include="PlayerStateMove.h" />
     <ClInclude Include="Position.h" />

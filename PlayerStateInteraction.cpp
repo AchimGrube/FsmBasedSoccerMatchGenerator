@@ -1,7 +1,7 @@
-#include "PlayerStateDefend.h"
+#include "PlayerStateInteraction.h"
 #include "Match.h"
 
-void PlayerStateDefend::doAction(Player& player, Pitch& pitch, Ball& ball)
+void PlayerStateInteraction::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
 	beginTurn(player, pitch);
 

@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Pitch.h"
 
-class PlayerStateDefend :	public IPlayerState
+class PlayerStateInteraction :	public IPlayerState
 {
 public:
 

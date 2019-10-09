@@ -15,7 +15,7 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 			if (!player.hasBall())
 			{
 				player.hasBall(false);
-				player.setState(State::Defend);
+				player.setState(State::Interaction);
 				player.setTarget(*ball.getPosition());
 			}
 			//else
