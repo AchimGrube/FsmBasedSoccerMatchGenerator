@@ -1,21 +1,28 @@
+#pragma once
+
 #include "Entity.h"
 #include "_functions.h"
+#include "Position.h"
+
+Entity::Entity()
+{
+	this->position = std::make_shared<Position>();
+}
 
 std::shared_ptr<Position> Entity::getPosition()
 {
-	return std::make_shared<Position>(position);
+	return std::shared_ptr<Position>(this->position);
 }
 
-void Entity::setPosition(const Position& position)
+void Entity::setPosition(int x, int y)
 {
-	this->position = position;
+	this->position->set(x, y);
 }
 
 void Entity::move(Position& target)
 {
-	int stepX = Helper::sign(target.getX() - position.getX());
-	int stepY = Helper::sign(target.getY() - position.getY());
+	int stepX = sign(target.getX() - position->getX());
+	int stepY = sign(target.getY() - position->getY());
 
-	Position newPos = Position(position.getX() + stepX, position.getY() + stepY);
-	setPosition(newPos);
+	setPosition(position->getX() + stepX, position->getY() + stepY);
 }

@@ -5,16 +5,19 @@ struct Position
 public:
 
 	Position();
-	Position(int x, int y);
+	Position(int, int);
+	~Position();
 
-	void set(const Position&);
+	void set(Position&);
 	void set(int, int);
 
-	int getX() const;
-	int getY() const;
+	int getX();
+	int getY();
 
 private:
-	int x = 0, y = 0;
+
+	int x;
+	int y;
 
 	void setX(int);
 	void setY(int);

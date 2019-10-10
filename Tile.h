@@ -2,7 +2,7 @@
 
 #include <list>
 
-#include "Player.h"
+class Player;
 
 enum class Area
 {
@@ -13,18 +13,24 @@ class Tile
 {
 public:
 
-	Tile();
-	Tile(int, int);
-	
+	Tile(int, int, Area);
+	~Tile();
+
 	int getX() const;
 	int getY() const;
 
-	Area getArea();
-	void setArea(Area);
+	Area getArea() const;
+	void setArea(const Area&);
+
+	std::list<Player*>* getPlayers();
+	void addPlayer(Player&);
+	void removePlayer(const Player&);
 
 private:
 
-	int x, y;
+	int x;
+	int y;
 	Area area;
-};
 
+	std::list<Player*> players;
+};

@@ -1,26 +1,21 @@
 #pragma once
 
-#include <string>
 #include <vector>
-#include <fstream>
-#include <ctime>
+#include <string>
 
-#include "Player.h"
-#include "Position.h"
-#include "Pitch.h"
-
-using std::string;
-using std::vector;
+class Player;
 
 class Generator
 {
 public:
 
+	Generator();
+	~Generator();
+
 	Player getNewPlayer();
 
 private:
 
-	vector<string> names;
-	string getName();
-
+	std::vector<std::string> names;
+	std::string getName();
 };

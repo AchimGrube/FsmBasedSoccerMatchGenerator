@@ -2,18 +2,20 @@
 
 #include <memory>
 
-#include "Position.h"
+struct Position;
 
 class Entity abstract
 {
 public:
 
+	Entity();
+
 	std::shared_ptr<Position> getPosition();
-	void setPosition(const Position&);
+	void setPosition(int, int);
 
 	virtual void move(Position&);
 
 private:
 
-	Position position;
+	std::shared_ptr<Position> position;
 };

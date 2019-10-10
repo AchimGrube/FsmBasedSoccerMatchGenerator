@@ -1,16 +1,15 @@
 #pragma once
 
+#include <ctime>
 #include <iostream>
-
 #include "Match.h"
-
-using std::cout;
-using std::endl;
 
 int main()
 {
-	Match* match = new Match();
-	match->start();
+	srand((unsigned)std::time(NULL));
+
+	Match match = Match();
+	match.start();
 
 	return 0;
 }

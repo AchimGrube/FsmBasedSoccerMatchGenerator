@@ -1,8 +1,11 @@
+#pragma once
+
 #include "Position.h"
 
 Position::Position()
 {
-	x = 0; y = 0;
+	x = 0;
+	y = 0;
 }
 
 Position::Position(int x, int y) : Position()
@@ -10,7 +13,11 @@ Position::Position(int x, int y) : Position()
 	set(x, y);
 }
 
-void Position::set(const Position& position)
+Position::~Position()
+{
+}
+
+void Position::set(Position& position)
 {
 	set(position.getX(), position.getY());
 }
@@ -21,14 +28,14 @@ void Position::set(int x, int y)
 	setY(y);
 }
 
-int Position::getX() const
+int Position::getX()
 {
-	return x;
+	return this->x;
 }
 
-int Position::getY() const
+int Position::getY()
 {
-	return y;
+	return this->y;
 }
 
 void Position::setX(int x)

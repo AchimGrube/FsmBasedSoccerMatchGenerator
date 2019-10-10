@@ -1,5 +1,19 @@
+#pragma once
+
 #include "PlayerStateMove.h"
+#include "Player.h"
+#include "Ball.h"
+#include "Position.h"
+#include "FiniteStateMachine.h"
 #include "Match.h"
+
+PlayerStateMove::PlayerStateMove()
+{
+}
+
+PlayerStateMove::~PlayerStateMove()
+{
+}
 
 void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
@@ -7,42 +21,26 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	player.setTarget(*ball.getPosition());
 	player.move(*player.getTarget());
-	
-	if (player.getPosition()->getX() == ball.getPosition()->getX() && player.getPosition()->getY() == ball.getPosition()->getY())
+
+	int playerPosX = player.getPosition()->getX();
+	int playerPosY = player.getPosition()->getY();
+	Position ballPos = *ball.getPosition();
+
+	if (playerPosX == ballPos.getX() && playerPosY == ballPos.getY())
 	{
-		if (pitch.getPlayersOnTiles(player.getPosition()->getX(), player.getPosition()->getY())->size() > 0)
+		if (pitch.getTile(playerPosX, playerPosY)->getPlayers()->size() > 0)
 		{
 			if (!player.hasBall())
 			{
-				player.hasBall(false);
-				player.setState(State::Interaction);
-				player.setTarget(*ball.getPosition());
+				player.setState(State::Interact);
+				player.setTarget(ballPos);
 			}
-			//else
-			//{
-			//	std::cout << player.getName() << " setzt zum Dribbling an";
-			//	if (rand() % 2 == 1)
-			//	{
-			//		std::cout << ", bleibt aber haengen und verliert den Ball.\n\n";
-			//		player.hasBall(false);
-			//		player.setState(State::Idle);
-			//		player.setTarget(Position(0, 0));
-			//	}
-			//	else
-			//	{
-			//		std::cout << ", tanzt durch alle Gegner und startet einen Angriff.\n\n";
-			//		player.hasBall(true);
-			//		player.setState(State::Attack);
-			//		player.setTarget(*player.getOpponentGoalPosition());
-			//	}
-			//}
-		}
+	}
 		else
 		{
-			string text = player.getName() + " holt sich den frei liegenden Ball.\n\n";
-			std::cout << text;
-			Match::addTextOutput(text);
-			std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
+			processText(player.getName() + " holt sich den freien Ball.\n\n");
+			pause(Match::textSpeed);
+
 			player.hasBall(true);
 			player.setState(State::Attack);
 			player.setTarget(*player.getOpponentGoalPosition());

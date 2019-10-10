@@ -1,48 +1,46 @@
+#pragma once
+
 #include "Player.h"
-#include "Pitch.h"
+#include "PlayerState.h"
 
 Player::Player()
 {
-	level = 0;
-	state = State::Idle;
-	playerHasBall = false;
-	_fsm = FiniteStateMachine();
-	_playerState = nullptr;
+	this->_fsm = nullptr;
+	this->_playerState = nullptr;
+	this->level = 0;
+	this->opponentGoalPosition = nullptr;
+	this->playerHasBall = false;
+	this->state = State::Idle;
+	this->target = nullptr;
 }
 
-Player::Player(string name) : Player()
+Player::Player(std::string name)
 {
 	this->name = name;
 }
 
-string Player::getName() const
+Player::~Player()
 {
-	return name;
+}
+
+std::string Player::getName() const
+{
+	return this->name;
 }
 
 int Player::getLevel() const
 {
-	return level;
+	return this->level;
 }
 
-void Player::setLevel(int skillLevel)
+void Player::setLevel(int level)
 {
-	this->level = skillLevel;
-}
-
-std::shared_ptr<Position> Player::getTarget()
-{
-	return std::make_shared<Position>(target);
-}
-
-void Player::setTarget(const Position& target)
-{
-	this->target = target;
+	this->level = level;
 }
 
 State Player::getState() const
 {
-	return state;
+	return this->state;
 }
 
 void Player::setState(const State& state)
@@ -60,20 +58,28 @@ void Player::hasBall(bool hasBall)
 	this->playerHasBall = hasBall;
 }
 
-std::shared_ptr<Position> Player::getOpponentGoalPosition()
+std::shared_ptr<Position> Player::getTarget()
 {
-	return std::make_shared<Position>(opponentGoalPosition);
+	return std::shared_ptr<Position>(this->target);
 }
 
-void Player::setOpponentGoalPosition(Position& opponentGoalPosition)
+void Player::setTarget(Position& position)
 {
-	this->opponentGoalPosition = opponentGoalPosition;
+	this->target = std::make_shared<Position>(position);
+}
+
+std::shared_ptr<Position> Player::getOpponentGoalPosition()
+{
+	return std::shared_ptr<Position>(this->opponentGoalPosition);
+}
+
+void Player::setOpponentGoalPosition(Position& position)
+{
+	this->opponentGoalPosition = std::make_shared<Position>(position);
 }
 
 void Player::performRound(Pitch& pitch, Ball& ball)
 {
-	_playerState = std::shared_ptr<IPlayerState>(_fsm.updateState(getState()));
-	//_playerState->enter(*this, pitch);
-	_playerState->doAction(*this, pitch, ball);
-	//_playerState->leave(*this, pitch);
+	this->_playerState = _fsm->updateState(getState());
+	this->_playerState->doAction(*this, pitch, ball);
 }

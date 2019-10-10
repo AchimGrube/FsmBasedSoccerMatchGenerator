@@ -1,33 +1,63 @@
+#pragma once
+
 #include "Tile.h"
 
-Tile::Tile()
-{
-	x = y = 0;
-	area = Area::Out;
-}
-
-Tile::Tile(int x, int y) : Tile()
+Tile::Tile(int x, int y, Area area)
 {
 	this->x = x;
 	this->y = y;
+	this->area = area;
+}
+
+Tile::~Tile()
+{
 }
 
 int Tile::getX() const
 {
-	return x;
+	return this->x;
 }
 
 int Tile::getY() const
 {
-	return y;
+	return this->y;
 }
 
-Area Tile::getArea()
+Area Tile::getArea() const
 {
-	return area;
+	return this->area;
 }
 
-void Tile::setArea(Area area)
+void Tile::setArea(const Area& area)
 {
 	this->area = area;
+}
+
+std::list<Player*>* Tile::getPlayers()
+{
+	return &players;
+}
+
+void Tile::addPlayer(Player& player)
+{
+	players.push_back(&player);
+}
+
+void Tile::removePlayer(const Player& player)
+{
+	Player* remove = nullptr;
+
+	for (auto element : players)
+	{
+		if (element == &player)
+		{
+			remove = element;
+			break;
+		}
+	}
+
+	if (remove != nullptr)
+	{
+		players.remove(remove);
+	}
 }

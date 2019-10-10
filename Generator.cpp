@@ -1,26 +1,37 @@
+#pragma once
+
+#include <fstream>
+
 #include "Generator.h"
+#include "Player.h"
+#include "Position.h"
+#include "Pitch.h"
+
+Generator::Generator()
+{
+}
+
+Generator::~Generator()
+{
+}
 
 Player Generator::getNewPlayer()
 {
 	Player newPlayer(getName());
-	Position startPosition;
-	startPosition.set(rand() % Pitch::sizeX, rand() % Pitch::sizeY);
-	newPlayer.setPosition(startPosition);
-	//
-	//newPlayer.setPosition(Position(8, 5));
-	//
+	newPlayer.setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 	newPlayer.setLevel((rand() % 5) + 1);
+
 	return newPlayer;
 }
 
-string Generator::getName()
+std::string Generator::getName()
 {
 	if (names.size() == 0)
 	{
 		std::ifstream file;
-		string line;
+		std::string line;
 
-		file.open("vornamen.csv", std::ios::in);
+		file.open("vornamen.csv");
 
 		if (file)
 		{
@@ -41,7 +52,7 @@ string Generator::getName()
 
 	int rndEntry = rand() % names.size();
 
-	string newName = names.at(rndEntry) + " ";
+	std::string newName = names.at(rndEntry) + " ";
 	newName += rand() % ('Z' - 'A' + 1) + 'A';
 	newName += ".";
 

@@ -1,8 +1,7 @@
 #pragma once
 
-#include <memory>
 #include <array>
-#include <list>
+#include <memory>
 
 #include "Tile.h"
 
@@ -10,20 +9,15 @@ class Pitch
 {
 public:
 
-	static const int sizeX = 17;
-	static const int sizeY = 11;
+	static const int SIZE_X = 17;
+	static const int SIZE_Y = 11;
 
 	Pitch();
+	~Pitch();
 
 	std::shared_ptr<Tile> getTile(int, int);
 
-	std::list<Player*>* getPlayersOnTiles(int, int);
-	void addPlayerOnTile(Player&, int, int);
-	void removePlayerOnTile(Player&, int, int);
-
 private:
 
-	std::array<std::array<Tile, sizeY>, sizeX> tiles;
-	std::array<std::array<std::list<Player*>, sizeY>, sizeX> playersOnTiles;
+	std::array<std::array<std::shared_ptr<Tile>, SIZE_Y>, SIZE_X> tiles;
 };
-

@@ -6,8 +6,6 @@ class Ball : public Entity
 {
 public:
 
-
-
-private:
-
+	Ball();
+	~Ball();
 };

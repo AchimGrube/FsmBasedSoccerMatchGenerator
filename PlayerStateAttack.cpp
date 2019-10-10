@@ -1,5 +1,22 @@
+#pragma once
+
 #include "PlayerStateAttack.h"
+#include "Player.h"
+#include "Ball.h"
+#include "Position.h"
+#include "Pitch.h"
+#include "Tile.h"
+//#include "_functions.h"
 #include "Match.h"
+#include "FiniteStateMachine.h"
+
+PlayerStateAttack::PlayerStateAttack()
+{
+}
+
+PlayerStateAttack::~PlayerStateAttack()
+{
+}
 
 void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 {
@@ -9,67 +26,61 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 	player.move(*player.getTarget());
 	ball.move(*player.getPosition());
 
-	if (pitch.getTile(player.getPosition()->getX(), player.getPosition()->getY())->getArea() == Area::Penalty && player.hasBall())
+	int playerPosX = player.getPosition()->getX();
+	int playerPosY = player.getPosition()->getY();
+	
+	if (pitch.getTile(playerPosX, playerPosY)->getArea() == Area::Penalty && player.hasBall())
 	{
 		int rndPlayer = rand() % (10 / player.getLevel()) + 1;
-
 		int chance = 10 * player.getLevel();
 
-		string text = player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n";
-		std::cout << text;
-		Match::addTextOutput(text);
-		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed * 2));
-
-		int rndGoalie = rand() % (10 / ((rand() % 5) + 1)) + 1;
+		processText(player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n");
+		pause(Match::textSpeed);
 
 		if (rndPlayer == 1)
 		{
-			if (rndPlayer <= rndGoalie)
+			int rndGoalkeeper = rand() % (10 / ((rand() % 5) + 1)) + 1;
+
+			if (rndPlayer <= rndGoalkeeper)
 			{
-				text = "TOOOOR!!!\n\n";
-				std::cout << text;
-				Match::addTextOutput(text);
+				processText("TOOOOOR!\n\n");
+
 				if (player.getOpponentGoalPosition()->getX() > 8)
 				{
-					Match::addGoalTeamA();
+					// tor teamA
 				}
 				else
 				{
-					Match::addGoalTeamB();
+					// tor teamB
 				}
+
+				ball.setPosition(8, 5);
 			}
 			else
 			{
-				text = "Der Torwart haelt den Ball.\n\n";
-				std::cout << text;
-				Match::addTextOutput(text);
+				processText("Der Torwart haelt den Ball.\n\n");
+				ball.setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 			}
 		}
 		else
 		{
-			text = "Daneben!\n\n";
-			std::cout << text;
-			Match::addTextOutput(text);
+			processText("Der Schuss geht daneben.\n\n");
+			ball.setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(Match::textSpeed));
+		pause(Match::textSpeed);
 
 		player.hasBall(false);
 		player.setState(State::Idle);
-		player.setTarget(Position(0, 0));
 
-		ball.setPosition(Position(8, 5));
-
-		for (int x = 0; x < Pitch::sizeX; x++)
+		for (int x = 0; x < Pitch::SIZE_X; x++)
 		{
-			for (int y = 0; y < Pitch::sizeY; y++)
+			for (int y = 0; y < Pitch::SIZE_Y; y++)
 			{
-				auto playerList = *pitch.getPlayersOnTiles(x, y);
+				std::list<Player*> playerList = *pitch.getTile(x, y)->getPlayers();
 
 				for (auto element : playerList)
 				{
-					element->hasBall(false);
 					element->setState(State::Idle);
-					element->setTarget(Position(0, 0));
 				}
 			}
 		}

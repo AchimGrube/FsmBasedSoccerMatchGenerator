@@ -1,20 +1,18 @@
 #pragma once
 
-#include <memory>
-
-#include "IPlayerState.h"
+class PlayerState;
 
 enum class State
 {
-	Idle, Move, Interaction, Attack
+	Idle, Move, Interact, Attack
 };
 
 class FiniteStateMachine
 {
 public:
 
-	std::shared_ptr<IPlayerState> updateState(State state);
+	FiniteStateMachine();
+	~FiniteStateMachine();
 
-private:
-
+	PlayerState* updateState(State);
 };

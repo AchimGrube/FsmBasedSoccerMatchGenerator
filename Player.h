@@ -3,27 +3,27 @@
 #include <string>
 #include <memory>
 
+#include "Entity.h"
+#include "Position.h"
 #include "FiniteStateMachine.h"
-#include "Ball.h"
 
-using std::string;
-
+enum class State;
 class Pitch;
+class Ball;
+class PlayerState;
 
 class Player : public Entity
 {
 public:
 
 	Player();
-	Player(string name);
+	Player(std::string);
+	~Player();
 
-	string getName() const;
+	std::string getName() const;
 
 	int getLevel() const;
 	void setLevel(int);
-
-	std::shared_ptr<Position> getTarget();
-	void setTarget(const Position&);
 
 	State getState() const;
 	void setState(const State&);
@@ -31,20 +31,23 @@ public:
 	bool hasBall() const;
 	void hasBall(bool);
 
+	std::shared_ptr<Position> getTarget();
+	void setTarget(Position&);
+
 	std::shared_ptr<Position> getOpponentGoalPosition();
 	void setOpponentGoalPosition(Position&);
 
 	void performRound(Pitch&, Ball&);
 
 private:
-	
-	string name;
+
+	std::string name;
 	int level;
-	Position target;
 	State state;
 	bool playerHasBall;
-	Position opponentGoalPosition;
+	std::shared_ptr<Position> target;
+	std::shared_ptr<Position> opponentGoalPosition;
 
-	std::shared_ptr<IPlayerState> _playerState;
-	FiniteStateMachine _fsm;
+	PlayerState* _playerState;
+	std::shared_ptr<FiniteStateMachine> _fsm;
 };

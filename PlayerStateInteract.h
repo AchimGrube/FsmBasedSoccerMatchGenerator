@@ -6,12 +6,12 @@ class Player;
 class Pitch;
 class Ball;
 
-class PlayerStateIdle :	public PlayerState
+class PlayerStateInteract : public PlayerState
 {
 public:
 
-	PlayerStateIdle();
-	~PlayerStateIdle();
+	PlayerStateInteract();
+	~PlayerStateInteract();
 
 	void doAction(Player&, Pitch&, Ball&) override;
 };

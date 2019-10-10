@@ -1,27 +1,15 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <chrono>
-#include <thread>
-#include <Windows.h>
-#include <array>
-#include <memory>
 #include <list>
-#include <fstream>
-#include <ctime>
+#include <string>
+#include <array>
+#include <vector>
+#include <iostream>
+#include <memory>
 
-#include "Pitch.h"
 #include "Player.h"
 #include "Ball.h"
-#include "Generator.h"
-
-using std::cout;
-using std::endl;
-using std::vector;
-using std::pair;
-using std::array;
+#include "Pitch.h"
 
 enum class TextSpeed
 {
@@ -30,10 +18,10 @@ enum class TextSpeed
 
 class Match
 {
-
 public:
 
 	Match();
+	~Match();
 
 	std::shared_ptr<Ball> getBall();
 
@@ -44,12 +32,12 @@ public:
 
 	bool hasEnded() const;
 
-	static void addGoalTeamA();
-	static void addGoalTeamB();
-	static void resetScore();
+	void addGoalTeamA();
+	void addGoalTeamB();
+	void resetScore();
 
-	static std::list<string> getTextOutput();
-	static void addTextOutput(string);
+	std::list<std::string> getTextOutput();
+	void addTextOutput(std::string);
 
 	void start();
 
@@ -57,22 +45,22 @@ public:
 
 private:
 
-	array<Player, 10> teamA;
-	array<Player, 10> teamB;
+	std::array<Player, 10> teamA;
+	std::array<Player, 10> teamB;
 
-	vector<Player*> players;
+	std::vector<Player*> players;
 
-	Pitch pitch;
-	Ball ball;
+	std::shared_ptr<Pitch> pitch;
+	std::shared_ptr<Ball> ball;
 
-	int length, minute;
+	int length;
+	int minute;
+
+	std::pair<int, int> score;
+
+	std::list<std::string> textOutput;
 
 	void init();
 	void nextMinute();
-	void printMatchLines(Player&);
-	void setConsoleCursorPosition(int, int, bool);
-	void saveTextToFile();
-
-	static pair<int, int> score;
-	static std::list<string> textOutput;
+	void saveOutput();
 };
