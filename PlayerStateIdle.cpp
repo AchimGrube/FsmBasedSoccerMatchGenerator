@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "FiniteStateMachine.h"
 #include "Ball.h"
+#include "Match.h"
 
 PlayerStateIdle::PlayerStateIdle()
 {
@@ -14,15 +15,15 @@ PlayerStateIdle::~PlayerStateIdle()
 {
 }
 
-void PlayerStateIdle::doAction(Player& player, Pitch& pitch, Ball& ball)
+void PlayerStateIdle::doAction(Player& player, Match& match)
 {
-	beginTurn(player, pitch);
+	beginTurn(player, *match.getPitch());
 
 	if (!player.hasBall())
 	{
 		player.setState(State::Move);
-		player.setTarget(*ball.getPosition());
+		player.setTarget(*match.getBall()->getPosition());
 	}
 
-	endTurn(player, pitch);
+	endTurn(player, *match.getPitch());
 }

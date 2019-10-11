@@ -25,6 +25,11 @@ std::shared_ptr<Ball> Match::getBall()
 	return std::shared_ptr<Ball>(this->ball);
 }
 
+std::shared_ptr<Pitch> Match::getPitch()
+{
+	return std::shared_ptr<Pitch>(this->pitch);
+}
+
 int Match::getLength() const
 {
 	return this->length;
@@ -95,7 +100,7 @@ void Match::init()
 {
 	resetScore();
 
-	this->textSpeed = (int)TextSpeed::Instant;
+	this->textSpeed = (int)TextSpeed::Slow;
 
 	this->textOutput.clear();
 
@@ -124,7 +129,7 @@ void Match::nextMinute()
 
 	for (auto& player : players)
 	{
-		player->performRound(*pitch, *ball);
+		player->performRound(*this);
 	}
 
 	addMinute();

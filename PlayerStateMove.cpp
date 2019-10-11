@@ -15,20 +15,20 @@ PlayerStateMove::~PlayerStateMove()
 {
 }
 
-void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
+void PlayerStateMove::doAction(Player& player, Match& match)
 {
-	beginTurn(player, pitch);
+	beginTurn(player, *match.getPitch());
 
-	player.setTarget(*ball.getPosition());
+	player.setTarget(*match.getBall()->getPosition());
 	player.move(*player.getTarget());
 
 	int playerPosX = player.getPosition()->getX();
 	int playerPosY = player.getPosition()->getY();
-	Position ballPos = *ball.getPosition();
+	Position ballPos = *match.getBall()->getPosition();
 
 	if (playerPosX == ballPos.getX() && playerPosY == ballPos.getY())
 	{
-		if (pitch.getTile(playerPosX, playerPosY)->getPlayers()->size() > 0)
+		if (match.getPitch()->getTile(playerPosX, playerPosY)->getPlayers()->size() > 0)
 		{
 			if (!player.hasBall())
 			{
@@ -47,5 +47,5 @@ void PlayerStateMove::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 	}
 
-	endTurn(player, pitch);
+	endTurn(player, *match.getPitch());
 }

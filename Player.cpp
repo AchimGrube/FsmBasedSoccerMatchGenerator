@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "PlayerState.h"
+#include "Match.h"
 
 Player::Player()
 {
@@ -78,8 +79,8 @@ void Player::setOpponentGoalPosition(Position& position)
 	this->opponentGoalPosition = std::make_shared<Position>(position);
 }
 
-void Player::performRound(Pitch& pitch, Ball& ball)
+void Player::performRound(Match& match)
 {
 	this->_playerState = _fsm->updateState(getState());
-	this->_playerState->doAction(*this, pitch, ball);
+	this->_playerState->doAction(*this, match);
 }

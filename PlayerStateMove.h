@@ -3,8 +3,7 @@
 #include "PlayerState.h"
 
 class Player;
-class Pitch;
-class Ball;
+class Match;
 
 class PlayerStateMove :	public PlayerState
 {
@@ -13,5 +12,5 @@ public:
 	PlayerStateMove();
 	~PlayerStateMove();
 
-	void doAction(Player&, Pitch&, Ball&) override;
+	void doAction(Player&, Match&) override;
 };

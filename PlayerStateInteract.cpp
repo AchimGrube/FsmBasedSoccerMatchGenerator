@@ -19,16 +19,16 @@ PlayerStateInteract::~PlayerStateInteract()
 {
 }
 
-void PlayerStateInteract::doAction(Player& player, Pitch& pitch, Ball& ball)
+void PlayerStateInteract::doAction(Player& player, Match& match)
 {
-	beginTurn(player, pitch);
+	beginTurn(player, *match.getPitch());
 
 	int playerPosX = player.getPosition()->getX();
 	int playerPosY = player.getPosition()->getY();
 
 	int rndPlayer = rand() % (10 / player.getLevel()) + 1;
 	
-	std::list<Player*> playerList = *pitch.getTile(playerPosX, playerPosY)->getPlayers();
+	std::list<Player*> playerList = *match.getPitch()->getTile(playerPosX, playerPosY)->getPlayers();
 
 	for (auto opponent : playerList)
 	{
@@ -86,5 +86,5 @@ void PlayerStateInteract::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 	player.setState(State::Idle);
 
-	endTurn(player, pitch);
+	endTurn(player, *match.getPitch());
 }

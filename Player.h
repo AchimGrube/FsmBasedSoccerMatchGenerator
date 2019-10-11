@@ -11,6 +11,7 @@ enum class State;
 class Pitch;
 class Ball;
 class PlayerState;
+class Match;
 
 class Player : public Entity
 {
@@ -37,7 +38,7 @@ public:
 	std::shared_ptr<Position> getOpponentGoalPosition();
 	void setOpponentGoalPosition(Position&);
 
-	void performRound(Pitch&, Ball&);
+	void performRound(Match&);
 
 private:
 

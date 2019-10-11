@@ -18,18 +18,18 @@ PlayerStateAttack::~PlayerStateAttack()
 {
 }
 
-void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
+void PlayerStateAttack::doAction(Player& player, Match& match)
 {
-	beginTurn(player, pitch);
+	beginTurn(player, *match.getPitch());
 
 	player.setTarget(*player.getOpponentGoalPosition());
 	player.move(*player.getTarget());
-	ball.move(*player.getPosition());
+	match.getBall()->move(*player.getPosition());
 
 	int playerPosX = player.getPosition()->getX();
 	int playerPosY = player.getPosition()->getY();
 	
-	if (pitch.getTile(playerPosX, playerPosY)->getArea() == Area::Penalty && player.hasBall())
+	if (match.getPitch()->getTile(playerPosX, playerPosY)->getArea() == Area::Penalty && player.hasBall())
 	{
 		int rndPlayer = rand() % (10 / player.getLevel()) + 1;
 		int chance = 10 * player.getLevel();
@@ -47,25 +47,25 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 
 				if (player.getOpponentGoalPosition()->getX() > 8)
 				{
-					// tor teamA
+					match.addGoalTeamA();
 				}
 				else
 				{
-					// tor teamB
+					match.addGoalTeamB();
 				}
 
-				ball.setPosition(8, 5);
+				match.getBall()->setPosition(8, 5);
 			}
 			else
 			{
 				processText("Der Torwart haelt den Ball.\n\n");
-				ball.setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
+				match.getBall()->setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 			}
 		}
 		else
 		{
 			processText("Der Schuss geht daneben.\n\n");
-			ball.setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
+			match.getBall()->setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 		}
 		pause(Match::textSpeed);
 
@@ -76,7 +76,7 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		{
 			for (int y = 0; y < Pitch::SIZE_Y; y++)
 			{
-				std::list<Player*> playerList = *pitch.getTile(x, y)->getPlayers();
+				std::list<Player*> playerList = *match.getPitch()->getTile(x, y)->getPlayers();
 
 				for (auto element : playerList)
 				{
@@ -86,5 +86,5 @@ void PlayerStateAttack::doAction(Player& player, Pitch& pitch, Ball& ball)
 		}
 	}
 
-	endTurn(player, pitch);
+	endTurn(player, *match.getPitch());
 }

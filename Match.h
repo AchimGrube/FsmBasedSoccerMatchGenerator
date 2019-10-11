@@ -24,6 +24,7 @@ public:
 	~Match();
 
 	std::shared_ptr<Ball> getBall();
+	std::shared_ptr<Pitch> getPitch();
 
 	int getLength() const;
 
