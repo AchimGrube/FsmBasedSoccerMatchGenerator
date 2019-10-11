@@ -32,6 +32,16 @@ std::string Player::getName() const
 	return this->name;
 }
 
+std::string Player::getTeam() const
+{
+	return team;
+}
+
+void Player::setTeam(std::string team)
+{
+	this->team = team;
+}
+
 int Player::getLevel() const
 {
 	return this->level;

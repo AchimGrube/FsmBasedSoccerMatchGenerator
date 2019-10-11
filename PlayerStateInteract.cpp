@@ -42,7 +42,7 @@ void PlayerStateInteract::doAction(Player& player, Match& match)
 		{
 			if (player.getLevel() > opponent->getLevel())
 			{
-				processText(opponent->getName() + " passt den Ball zu " + player.getName() + "\n\n", match);
+				processText(opponent->getName() + "[" + opponent->getTeam() + "] passt den Ball zu " + player.getName() + "[" + player.getTeam() + "]\n\n", match);
 				pause(Match::textSpeed);
 
 				player.hasBall(true);
@@ -55,7 +55,7 @@ void PlayerStateInteract::doAction(Player& player, Match& match)
 			break;
 		}
 
-		processText(player.getName() + " geht in einen Zweikampf mit " + opponent->getName(), match);
+		processText(player.getName() + "[" + player.getTeam() + "] geht in einen Zweikampf mit " + opponent->getName() + "[" + opponent->getTeam() + "]", match);
 		pause(Match::textSpeed);
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;

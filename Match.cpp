@@ -85,8 +85,8 @@ void Match::start()
 
 	while (!hasEnded())
 	{
-		char buffer[32];
-		snprintf(buffer, 32, "### Minute %02d   [%d:%d] ###\n\n", minute, score.first, score.second);
+		char buffer[64];
+		snprintf(buffer, 64, "### Minute %02d   [Team A %d : %d Team B] ###\n\n", minute, score.first, score.second);
 		processText(buffer, *this);
 
 		nextMinute();
@@ -116,12 +116,14 @@ void Match::init()
 	for (size_t i = 0; i < teamA.size(); i++)
 	{
 		teamA.at(i) = generator.getNewPlayer();
+		teamA.at(i).setTeam("A");
 		teamA.at(i).setOpponentGoalPosition(teamBGoal);
 		players.push_back(&teamA.at(i));
 	}
 	for (size_t i = 0; i < teamB.size(); i++)
 	{
 		teamB.at(i) = generator.getNewPlayer();
+		teamB.at(i).setTeam("B");
 		teamB.at(i).setOpponentGoalPosition(teamAGoal);
 		players.push_back(&teamB.at(i));
 	}

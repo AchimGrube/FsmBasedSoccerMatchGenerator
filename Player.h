@@ -23,6 +23,9 @@ public:
 
 	std::string getName() const;
 
+	std::string getTeam() const;
+	void setTeam(std::string);
+
 	int getLevel() const;
 	void setLevel(int);
 
@@ -43,6 +46,7 @@ public:
 private:
 
 	std::string name;
+	std::string team;
 	int level;
 	State state;
 	bool playerHasBall;

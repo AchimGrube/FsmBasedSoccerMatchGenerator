@@ -35,7 +35,7 @@ void PlayerStateAttack::doAction(Player& player, Match& match)
 		int rndPlayer = rand() % (10 / player.getLevel()) + 1;
 		int chance = 10 * player.getLevel();
 
-		processText(player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n", match);
+		processText(player.getName() + "[" + player.getTeam() + "] dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n", match);
 		pause(Match::textSpeed);
 
 		if (rndPlayer == 1)
