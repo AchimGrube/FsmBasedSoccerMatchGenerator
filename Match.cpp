@@ -80,18 +80,20 @@ void Match::start()
 {
 	init();
 
-	processText("SPIELSTART:\n\n");
+	processText("*** ANPFIFF ***\n\n", *this);
 
 	while (!hasEnded())
 	{
 		char buffer[32];
 		snprintf(buffer, 32, "### Minute %02d   [%d:%d] ###\n\n", minute, score.first, score.second);
-		processText(buffer);
+		processText(buffer, *this);
 
 		nextMinute();
 	}
 
-	processText("\nDas Spiel endete " + std::to_string(score.first) + ":" + std::to_string(score.second) + "\n\n");
+	processText("*** ABPFIFF ***\n", *this);
+
+	processText("\n\n-->> Das Spiel endete " + std::to_string(score.first) + ":" + std::to_string(score.second) + "\n\n\n", *this);
 
 	saveOutput();
 }
@@ -100,7 +102,7 @@ void Match::init()
 {
 	resetScore();
 
-	this->textSpeed = (int)TextSpeed::Slow;
+	this->textSpeed = (int)TextSpeed::Instant;
 
 	this->textOutput.clear();
 

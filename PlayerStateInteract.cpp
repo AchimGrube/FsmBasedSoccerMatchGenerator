@@ -41,7 +41,7 @@ void PlayerStateInteract::doAction(Player& player, Match& match)
 		{
 			if (player.getLevel() > opponent->getLevel())
 			{
-				processText(opponent->getName() + " passt den Ball zu " + player.getName() + "\n\n");
+				processText(opponent->getName() + " passt den Ball zu " + player.getName() + "\n\n", match);
 				pause(Match::textSpeed);
 
 				player.hasBall(true);
@@ -54,14 +54,14 @@ void PlayerStateInteract::doAction(Player& player, Match& match)
 			break;
 		}
 
-		processText(player.getName() + " geht in einen Zweikampf mit " + opponent->getName());
+		processText(player.getName() + " geht in einen Zweikampf mit " + opponent->getName(), match);
 		pause(Match::textSpeed);
 
 		int rndOpponent = rand() % (opponent->getLevel()) + 1;
 
 		if (rndPlayer >= rndOpponent)
 		{
-			processText(" und nimmt ihm den Ball ab.\n\n");
+			processText(" und nimmt ihm den Ball ab.\n\n", match);
 
 			player.hasBall(true);
 			player.setState(State::Attack);
@@ -72,7 +72,7 @@ void PlayerStateInteract::doAction(Player& player, Match& match)
 		}
 		else
 		{
-			processText(", doch der bleibt am Ball.\n\n");
+			processText(", doch der bleibt am Ball.\n\n", match);
 
 			player.hasBall(false);
 			player.setState(State::Idle);

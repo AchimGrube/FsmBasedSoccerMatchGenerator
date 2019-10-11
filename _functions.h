@@ -8,8 +8,10 @@
 #include <fstream>
 #include <ctime>
 
+#include "Match.h"
+
 template<typename T> static int sign(T);
-static void processText(std::string);
+static void processText(std::string, Match& match);
 static void pause(int);
 static void writeToFile(std::list<std::string>);
 static std::string getDateTimeString();
@@ -19,9 +21,10 @@ template<typename T> static int sign(T value)
 	return (T(0) < value) - (T(0) > value);
 }
 
-static void processText(std::string text)
+static void processText(std::string text, Match& match)
 {
 	std::cout << text;
+	match.addTextOutput(text);
 }
 
 static void pause(int duration)

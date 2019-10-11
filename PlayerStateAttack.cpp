@@ -34,7 +34,7 @@ void PlayerStateAttack::doAction(Player& player, Match& match)
 		int rndPlayer = rand() % (10 / player.getLevel()) + 1;
 		int chance = 10 * player.getLevel();
 
-		processText(player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n");
+		processText(player.getName() + " dringt in den Strafraum ein und schiesst auf das Tor! (Chance: " + std::to_string(chance) + "%)\n", match);
 		pause(Match::textSpeed);
 
 		if (rndPlayer == 1)
@@ -43,7 +43,7 @@ void PlayerStateAttack::doAction(Player& player, Match& match)
 
 			if (rndPlayer <= rndGoalkeeper)
 			{
-				processText("TOOOOOR!\n\n");
+				processText("TOOOOOR!\n\n", match);
 
 				if (player.getOpponentGoalPosition()->getX() > 8)
 				{
@@ -58,13 +58,13 @@ void PlayerStateAttack::doAction(Player& player, Match& match)
 			}
 			else
 			{
-				processText("Der Torwart haelt den Ball.\n\n");
+				processText("Der Torwart haelt den Ball.\n\n", match);
 				match.getBall()->setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 			}
 		}
 		else
 		{
-			processText("Der Schuss geht daneben.\n\n");
+			processText("Der Schuss geht daneben.\n\n", match);
 			match.getBall()->setPosition(rand() % Pitch::SIZE_X, rand() % Pitch::SIZE_Y);
 		}
 		pause(Match::textSpeed);

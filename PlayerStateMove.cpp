@@ -38,7 +38,7 @@ void PlayerStateMove::doAction(Player& player, Match& match)
 	}
 		else
 		{
-			processText(player.getName() + " holt sich den freien Ball.\n\n");
+			processText(player.getName() + " holt sich den freien Ball.\n\n", match);
 			pause(Match::textSpeed);
 
 			player.hasBall(true);
