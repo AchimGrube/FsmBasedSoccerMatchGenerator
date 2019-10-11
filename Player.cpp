@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "PlayerState.h"
 #include "Match.h"
+#include "FiniteStateMachine.h"
 
 // Repräsentiert einen Spieler
 

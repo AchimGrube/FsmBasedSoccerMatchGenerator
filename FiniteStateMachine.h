@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 class PlayerState;
 
 enum class State
@@ -14,5 +16,5 @@ public:
 	FiniteStateMachine();
 	~FiniteStateMachine();
 
-	PlayerState* updateState(State);
+	std::shared_ptr<PlayerState> updateState(State);
 };

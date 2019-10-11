@@ -17,18 +17,18 @@ FiniteStateMachine::~FiniteStateMachine()
 }
 
 // Liest den aktuellen Zustand des Spielers und gibt ein neues Objekt der von <PlayerState> abgeleiteten Klasse zurück, welche die jeweilige Logik des Zustands beinhaltet
-PlayerState* FiniteStateMachine::updateState(State state)
+std::shared_ptr<PlayerState> FiniteStateMachine::updateState(State state)
 {
 	switch (state)
 	{
 	case State::Idle:
-		return new PlayerStateIdle();
+		return std::make_shared<PlayerStateIdle>();
 	case State::Move:
-		return new PlayerStateMove();
+		return std::make_shared<PlayerStateMove>();
 	case State::Interact:
-		return new PlayerStateInteract();
+		return std::make_shared<PlayerStateInteract>();
 	case State::Attack:
-		return new PlayerStateAttack();
+		return std::make_shared<PlayerStateAttack>();
 	default:
 		return nullptr;
 	}

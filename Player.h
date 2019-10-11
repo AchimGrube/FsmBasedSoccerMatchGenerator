@@ -5,13 +5,13 @@
 
 #include "Entity.h"
 #include "Position.h"
-#include "FiniteStateMachine.h"
 
 enum class State;
 class Pitch;
 class Ball;
 class PlayerState;
 class Match;
+class FiniteStateMachine;
 
 class Player : public Entity
 {
@@ -49,6 +49,6 @@ private:
 	std::shared_ptr<Position> target;
 	std::shared_ptr<Position> opponentGoalPosition;
 
-	PlayerState* _playerState;
+	std::shared_ptr<PlayerState> _playerState;
 	std::shared_ptr<FiniteStateMachine> _fsm;
 };
