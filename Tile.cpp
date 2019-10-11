@@ -2,6 +2,8 @@
 
 #include "Tile.h"
 
+// Repräsentiert ein Feld auf dem Spielfeld
+
 Tile::Tile(int x, int y, Area area)
 {
 	this->x = x;

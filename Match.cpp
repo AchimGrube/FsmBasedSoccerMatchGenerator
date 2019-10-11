@@ -7,6 +7,7 @@
 
 int Match::textSpeed;
 
+// Initialisiert und steuert den eigentlichen Spielablauf (die Anzahl der Spieler wird in der Datei <Match.h> voreingestellt)
 Match::Match()
 {
 	this->length = 90;
@@ -98,11 +99,12 @@ void Match::start()
 	saveOutput();
 }
 
+// Setzt das Ergebnis zurück, stellt die Geschwindigkeit des Ablaufs ein und erstellt die beiden Mannschaften sowie einen Vector aller Spieler
 void Match::init()
 {
 	resetScore();
 
-	this->textSpeed = (int)TextSpeed::Instant;
+	this->textSpeed = (int)TextSpeed::Slow;
 
 	this->textOutput.clear();
 
@@ -125,6 +127,7 @@ void Match::init()
 	}
 }
 
+// Mischt die Spielerliste neu und führt für jeden Spieler eine Aktion pro "Minute" durch
 void Match::nextMinute()
 {
 	std::random_shuffle(players.begin(), players.end());
@@ -139,6 +142,7 @@ void Match::nextMinute()
 	pause(this->textSpeed);
 }
 
+// Möglichkeit, die Textausgabe in eine Datei zu schreiben
 void Match::saveOutput()
 {
 	std::cout << "Soll das Ergebnis in einer Datei gespeichert werden?\n";

@@ -7,6 +7,8 @@
 #include "Ball.h"
 #include "Match.h"
 
+// abgeleitete Klasse von <PlayerState> für die Logik, wenn ein Spieler den Status "Idle" hat
+
 PlayerStateIdle::PlayerStateIdle()
 {
 }

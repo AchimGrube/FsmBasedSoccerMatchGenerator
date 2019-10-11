@@ -7,9 +7,10 @@
 #include "Position.h"
 #include "Tile.h"
 #include "Pitch.h"
-//#include "_functions.h"
 #include "Match.h"
 #include "FiniteStateMachine.h"
+
+// abgeleitete Klasse von <PlayerState> für die Logik, wenn ein Spieler den Status "Interact" hat
 
 PlayerStateInteract::PlayerStateInteract()
 {

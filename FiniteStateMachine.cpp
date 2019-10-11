@@ -6,6 +6,8 @@
 #include "PlayerStateInteract.h"
 #include "PlayerStateAttack.h"
 
+// Endlicher Automat, um zwischen den verfügbaren Zuständen der Spieler zu wechseln
+
 FiniteStateMachine::FiniteStateMachine()
 {
 }
@@ -14,6 +16,7 @@ FiniteStateMachine::~FiniteStateMachine()
 {
 }
 
+// Liest den aktuellen Zustand des Spielers und gibt ein neues Objekt der von <PlayerState> abgeleiteten Klasse zurück, welche die jeweilige Logik des Zustands beinhaltet
 PlayerState* FiniteStateMachine::updateState(State state)
 {
 	switch (state)

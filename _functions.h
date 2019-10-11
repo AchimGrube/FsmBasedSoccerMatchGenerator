@@ -16,22 +16,30 @@ static void pause(int);
 static void writeToFile(std::list<std::string>);
 static std::string getDateTimeString();
 
+
+// Signumfunktion
+// value > 0 return 1
+// value = 0 return 0
+// value < 0 return -1
 template<typename T> static int sign(T value)
 {
 	return (T(0) < value) - (T(0) > value);
 }
 
+// Textausgabe auf der Konsole und hinterlegen in einer Liste, die am Ende in eine Datei geschrieben werden kann
 static void processText(std::string text, Match& match)
 {
 	std::cout << text;
 	match.addTextOutput(text);
 }
 
+// Programm pausiert für x Millisekunden
 static void pause(int duration)
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(duration));
 }
 
+// Textausgabe aus Liste in Datei schreiben
 static void writeToFile(std::list<std::string> lines)
 {
 	std::ofstream file;
@@ -53,6 +61,7 @@ static void writeToFile(std::list<std::string> lines)
 	std::cout << filename << " erfolgreich gespeichert.\n";
 }
 
+// Datum und Uhrzeit für Dateinamen in einen String schreiben
 static std::string getDateTimeString()
 {
 	time_t time;

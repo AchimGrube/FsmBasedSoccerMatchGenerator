@@ -4,6 +4,8 @@
 #include "_functions.h"
 #include "Position.h"
 
+// Basisklasse für alles, was sich auf dem Spielfeld bewegen kann
+
 Entity::Entity()
 {
 	this->position = std::make_shared<Position>();
@@ -19,6 +21,7 @@ void Entity::setPosition(int x, int y)
 	this->position->set(x, y);
 }
 
+// Bewegt Entität um 1 Feld horizontal, diagonal oder vertikal von seiner aktuellen Position in Richtung seiner Zielposition
 void Entity::move(Position& target)
 {
 	int stepX = sign(target.getX() - position->getX());

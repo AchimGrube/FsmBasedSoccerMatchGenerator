@@ -4,6 +4,8 @@
 #include "PlayerState.h"
 #include "Match.h"
 
+// Repräsentiert einen Spieler
+
 Player::Player()
 {
 	this->_fsm = nullptr;
@@ -15,7 +17,7 @@ Player::Player()
 	this->target = nullptr;
 }
 
-Player::Player(std::string name)
+Player::Player(std::string name) : Player()
 {
 	this->name = name;
 }
@@ -79,6 +81,7 @@ void Player::setOpponentGoalPosition(Position& position)
 	this->opponentGoalPosition = std::make_shared<Position>(position);
 }
 
+// Bekommt ein Objekt der abgeleiteten Klasse von <PlayerState> zurück und führt die überschriebene, rein virtuelle Methode <doAction> aus
 void Player::performRound(Match& match)
 {
 	this->_playerState = _fsm->updateState(getState());

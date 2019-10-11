@@ -2,6 +2,8 @@
 
 #include "Position.h"
 
+// Einfache Struktur zur Verwaltung der Position im zweidimensional Array
+
 Position::Position()
 {
 	x = 0;

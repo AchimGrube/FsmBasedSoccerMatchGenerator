@@ -6,9 +6,10 @@
 #include "Position.h"
 #include "Pitch.h"
 #include "Tile.h"
-//#include "_functions.h"
 #include "Match.h"
 #include "FiniteStateMachine.h"
+
+// abgeleitete Klasse von <PlayerState> für die Logik, wenn ein Spieler den Status "Attack" hat
 
 PlayerStateAttack::PlayerStateAttack()
 {

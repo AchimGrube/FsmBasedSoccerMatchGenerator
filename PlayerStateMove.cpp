@@ -7,6 +7,8 @@
 #include "FiniteStateMachine.h"
 #include "Match.h"
 
+// abgeleitete Klasse von <PlayerState> für die Logik, wenn ein Spieler den Status "Move" hat
+
 PlayerStateMove::PlayerStateMove()
 {
 }

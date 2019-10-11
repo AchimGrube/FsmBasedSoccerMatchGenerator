@@ -7,6 +7,8 @@
 #include "Position.h"
 #include "Pitch.h"
 
+// Spielergenerator
+
 Generator::Generator()
 {
 }
@@ -15,6 +17,7 @@ Generator::~Generator()
 {
 }
 
+// Liefert ein neues Objekt der Klasse <Player> mit zufälligem Namen und Level zurück
 Player Generator::getNewPlayer()
 {
 	Player newPlayer(getName());
@@ -24,6 +27,7 @@ Player Generator::getNewPlayer()
 	return newPlayer;
 }
 
+// Liest die Datei "vornamen.csv" ein, sofern noch nicht geschehen, und gibt einen zufälligen Männernamen daraus zurück, an den ein zufälliger Großbuchstabe angehängt wird
 std::string Generator::getName()
 {
 	if (names.size() == 0)

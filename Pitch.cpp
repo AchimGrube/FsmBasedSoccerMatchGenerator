@@ -2,6 +2,9 @@
 
 #include "Pitch.h"
 
+// Repräsentiert das Spielfeld in einem zweidimensionalen Array
+
+// Erstellt die einzelnen Felder des Spielfelds und weißt ihnen das passende Gebiet zu (Aus, Tor, Strafraum, Flügel, Zentrum)
 Pitch::Pitch()
 {
 	for (int x = 0; x < Pitch::SIZE_X; x++)
