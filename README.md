@@ -51,4 +51,5 @@ __Datei- und Klassenbeschreibung:__
 *Definiert ein Feld auf dem Spielfeld.*
 
 - **_functions** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/_functions.h)  
-*Diverse Hilfsfunktionen.*
+*Diverse Hilfsfunktionen und Ausgabe auf der Konsole.*  
+(Vorgabe für die Projektarbeit: Präsentation per Konsole oder GUI.)
