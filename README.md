@@ -3,9 +3,6 @@
 ___  
 __Datei- und Klassenbeschreibung:__  
 
-- **FsmBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FsmBasedSoccerMatchGenerator.cpp)  
-*Beinhaltet die main() Funktion.*
-
 - **Ball** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Ball.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Ball.cpp)  
 *Platzhalter für weitere Logik (z.B. Beschleunigung, wetterabhängiges Verhalten etc.)*
 
@@ -14,6 +11,9 @@ __Datei- und Klassenbeschreibung:__
 
 - **FiniteStateMachine** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FiniteStateMachine.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FiniteStateMachine.cpp)  
 *Schaltet zwischen den States der Spieler um (Idle, Move, Interact, Attack)*
+
+- **FsmBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FsmBasedSoccerMatchGenerator.cpp)  
+*Beinhaltet die main() Funktion.*
 
 - **Generator** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Generator.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Generator.cpp)  
 *Generiert neue Spieler und deren Namen.*  
