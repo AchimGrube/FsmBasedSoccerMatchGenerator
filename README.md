@@ -1,7 +1,7 @@
 #### Beispielhafte Simulation eines Fussballspiels mit eigenständig agierenden Spielern durch eine Finite-state machine
 #### *Eine C++ Projektarbeit über 10 Tage*
 ___  
-#### Datei- und Klassenbeschreibung:  
+__Datei- und Klassenbeschreibung:__  
 
 - **FsmBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FsmBasedSoccerMatchGenerator.cpp)  
 *Beinhaltet die main() Funktion.*
