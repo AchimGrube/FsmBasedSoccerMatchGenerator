@@ -30,7 +30,7 @@ __Datei- und Klassenbeschreibung:__
 *Definiert einen Spieler und ermöglicht das Ausführen von Aktionen.*
 
 - **PlayerState** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/PlayerState.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/PlayerState.cpp)  
-*Basisklasse aller States der Spieler. Legt die Position eines Spielers auf dem Feld fest.*
+*Basisklasse aller States der Spieler. Ordnet Spieler dem passenden Feld zu.*
 
 - **PlayerStateAttack** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/PlayerStateAttack.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/PlayerStateAttack.cpp)  
 *Beispielhafte Logik für einen angreifenden Spieler.*
