@@ -3,7 +3,7 @@
 ___
 #### Klassenbeschreibung:
 
-- **AiBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/AiBasedSoccerMatchGenerator.cpp)  
+- **FsmBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FsmBasedSoccerMatchGenerator.cpp)  
 *Beinhaltet die main() Funktion.*
 
 - **Ball** [.h](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Ball.h) [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/Ball.cpp)  
