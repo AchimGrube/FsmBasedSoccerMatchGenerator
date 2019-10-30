@@ -104,7 +104,7 @@ void Match::init()
 {
 	resetScore();
 
-	this->textSpeed = (int)TextSpeed::Slow;
+	this->textSpeed = (int)TextSpeed::Instant;
 
 	this->textOutput.clear();
 

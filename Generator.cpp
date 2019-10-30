@@ -1,7 +1,5 @@
 #pragma once
 
-#include <fstream>
-
 #include "Generator.h"
 #include "Player.h"
 #include "Position.h"
@@ -51,6 +49,10 @@ std::string Generator::getName()
 					}
 				}
 			}
+		}
+		else
+		{
+			std::cout << "Datei 'vornamen.csv' nicht gefunden.";
 		}
 	}
 

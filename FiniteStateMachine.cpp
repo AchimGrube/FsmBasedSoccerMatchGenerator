@@ -29,7 +29,5 @@ std::shared_ptr<PlayerState> FiniteStateMachine::updateState(State state)
 		return std::make_shared<PlayerStateInteract>();
 	case State::Attack:
 		return std::make_shared<PlayerStateAttack>();
-	default:
-		return nullptr;
 	}
 }

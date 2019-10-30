@@ -96,5 +96,6 @@ void Player::setOpponentGoalPosition(Position& position)
 void Player::performRound(Match& match)
 {
 	this->_playerState = _fsm->updateState(getState());
+
 	this->_playerState->doAction(*this, match);
 }
