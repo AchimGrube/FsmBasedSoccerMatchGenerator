@@ -22,8 +22,9 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{71235139-0E82-4931-8B36-BD270C83411F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>AiBasedSoccerMatchGenerator</RootNamespace>
+    <RootNamespace>FsmBasedSoccerMatchGenerator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>FsmBasedSoccerMatchGenerator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AiBasedSoccerMatchGenerator.cpp" />
+    <ClCompile Include="FsmBasedSoccerMatchGenerator.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />

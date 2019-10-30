@@ -60,7 +60,7 @@
     <ClCompile Include="PlayerStateInteract.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="AiBasedSoccerMatchGenerator.cpp">
+    <ClCompile Include="FsmBasedSoccerMatchGenerator.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
