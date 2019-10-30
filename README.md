@@ -1,7 +1,7 @@
-#### Eine C++ Projektarbeit über 10 Tage:
+#### Eine C++ Projektarbeit über 10 Tage:  
 #### Beispielhafte Simulation eines Fussballspiels mit eigenständig agierenden Spielern durch eine Finite-state machine
-___
-##### Klassenbeschreibung:
+___  
+##### Klassenbeschreibung:  
 
 - **FsmBasedSoccerMatchGenerator** [.cpp](https://github.com/AchimGrube/FsmBasedSoccerMatchGenerator/blob/master/FsmBasedSoccerMatchGenerator.cpp)  
 *Beinhaltet die main() Funktion.*
