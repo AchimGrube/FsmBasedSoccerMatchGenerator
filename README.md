@@ -1,6 +1,6 @@
-# AiBasedSoccerMatchGenerator
+# FsmBasedSoccerMatchGenerator
 ### Eine C++ Projektarbeit über 10 Tage:
-### Beispielhafte Simulation eines Fussballspiels mit eigenständig agierenden Spielern durch eine finite state machine
+### Beispielhafte Simulation eines Fussballspiels mit eigenständig agierenden Spielern durch eine Finite-state machine
 ___
 #### Klassenbeschreibung:
 
